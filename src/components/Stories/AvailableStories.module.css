@@ -1,0 +1,24 @@
+.Stories {
+  max-width: 100rem;
+  width: 90%;
+  margin: 10rem auto;
+  animation: Stories-appear 1s ease-out forwards;
+}
+
+.Stories ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes Stories-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
