@@ -1,7 +1,6 @@
-
+import React from "react";
 import classes from './StoryItem.module.css';
 import StoryItemForm from './StoryItemForm';
-
 const StoryItem = (props) => {
 
   return (
