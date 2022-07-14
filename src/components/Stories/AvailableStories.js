@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Card from '../UI/Card';
 import classes from './AvailableStories.module.css';
 import StoryItem from './StoryItem/StoryItem';
 const axios = require('axios').default;
@@ -29,9 +28,7 @@ const AvailableStories =  () => {
 
   return (
     <section className={classes.Stories}>
-      <Card>
-        <ul>{StoriesList}</ul>
-      </Card>
+      {StoriesList}
     </section>
   );
 };

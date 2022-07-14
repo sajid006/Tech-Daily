@@ -1,6 +1,6 @@
 
 import React from "react";
-import classes from './StoryItemForm.module.css';
+import classes from './StoryItemRating.module.css';
 
 const StoryItemForm = (props) => {
   return (

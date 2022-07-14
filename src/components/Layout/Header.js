@@ -1,35 +1,20 @@
 import React, { Fragment } from "react";
-import { Col, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import classes from "./Header.module.css";
-import HeaderButton from "./HeaderButton";
-
+import LoggedInHeader from "./LoggedInHeader";
+import LoggedOutHeader from "./LoggedOutHeader";
 const Header = (props) => {
+  const navigate = useNavigate();
   return (
     <Fragment>
       <header className={classes.header}>
-        <button className={classes.button}>
+        <button className={classes.button} onClick={()=>navigate("/")}>
           <h1>Tech Daily</h1>
         </button>
-        {!props.loggedIn && (
-          <Row>
-            <Col md>
-              <HeaderButton onClick={props.onShowLogin} value={"Log In"} />
-            </Col>
-            <Col md>
-              <HeaderButton onClick={props.onShowSignup} value={"Sign Up"} />
-            </Col>
-          </Row>
-        )}
-        {props.loggedIn && (
-          <Row>
-            <Col md>
-              <HeaderButton onClick={props.onClickProfile} value={props.loggedIn} />
-            </Col>
-            <Col md>
-              <HeaderButton onClick={props.onShowLogout} value={"Log Out"} />
-            </Col>
-          </Row>
-        )}
+        {!props.loggedIn && <LoggedOutHeader onShowLogin={props.onShowLogin}
+            onShowSignup={props.onShowSignup} />}
+        {props.loggedIn && <LoggedInHeader loggedIn={props.loggedIn} onShowLogout={props.onShowLogout}
+          onClickProfile={props.onClickProfile}/>}
       </header>
     </Fragment>
   );

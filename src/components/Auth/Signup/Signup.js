@@ -127,12 +127,12 @@ const Signup = (props) => {
     console.log(enteredPassword);
 
     // usernameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
-    setEnteredUsername("");
-    setEnteredUsernameTouched(false);
-    setEnteredName("");
-    setEnteredNameTouched(false);
-    setEnteredEmail("");
-    setEnteredEmailTouched(false);
+    // setEnteredUsername("");
+    // setEnteredUsernameTouched(false);
+    // setEnteredName("");
+    // setEnteredNameTouched(false);
+    // setEnteredEmail("");
+    // setEnteredEmailTouched(false);
     setEnteredPassword("");
     setEnteredPasswordTouched(false);
   };
