@@ -10,9 +10,14 @@ html {
 
 body {
   margin: 0;
-  background-color: #3f3f3f;
+  background-color: #ffffff;
 }
 
+.profile {
+  margin-top: 10rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .app {
   width: 90%;
   max-width: 43rem;
@@ -21,7 +26,23 @@ body {
   background-color: white;
   margin: 3rem auto;
 }
-
+.navbutton {
+  position: fixed;
+  height: 5rem;
+  width: 5rem;
+  z-index: 10;
+  background-color: #000000;
+  border: #000000;
+}
+.parent {
+  padding: 1rem;
+}
+.child {
+  padding: 1rem;
+}
+.float-left-child {
+  float: left;
+}
 .form-control {
   margin-bottom: 1rem;
   border: none;
@@ -88,6 +109,13 @@ button:disabled:active {
   color: #292929;
   border-color: #ccc;
   cursor: not-allowed;
+}
+.sidebar {
+  margin-top: "5rem";
+  height: "50%";
+  top: "5rem";
+  position: "sticky";
+  background-color: "black";
 }
 .form-cancel {
   background-color: #ccc;

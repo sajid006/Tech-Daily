@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Profile from "./components/Profile/Profile";
+import AddStory from "./components/Stories/AddStory";
+import FullStory from "./components/Stories/FullStory";
 import Home from "./Home/Home";
 import "./index.css";
-import Profile from "./Profile";
+import NotFound from "./NotFound";
 
 const App = () => {
 return (
@@ -10,7 +13,10 @@ return (
     <Routes>
     <Route exact path="/" element={<Home/>}></Route>
     <Route exact path="/home" element={<Home/>}></Route>
-    <Route exact path="/profile" element={<Profile/>}></Route>
+    <Route exact path="/profiles/:id" element={<Profile/>}></Route>
+    <Route exact path="/stories" element={<AddStory/>}></Route>
+    <Route exact path="/stories/:id" element={<FullStory/>}></Route>
+    <Route exact path="*" element={<NotFound/>}></Route>
     </Routes>
   </Router>);
 };

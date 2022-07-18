@@ -73,7 +73,6 @@ const Login = (props) => {
           setLoginMessage(res.data);
           console.log(res.data.message);
           localStorage.setItem("user", JSON.stringify(res.data));
-          //navigate("/");
           window.location.reload();
         } catch (err) {
           console.log(err.response.data.message);
@@ -103,11 +102,13 @@ const Login = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={FormSubmissionHandler}>
+        <h3>Log In</h3>
         <div className={usernameInputClasses}>
           <label htmlFor="name">Username</label>
           <input
             type="text"
             id="Username"
+            icon="person"
             onChange={usernameInputChangeHandler}
             onBlur={usernameInputBlurHandler}
             value={enteredUsername}
@@ -121,6 +122,7 @@ const Login = (props) => {
           <input
             type="password"
             id="Password"
+            icon="password"
             onChange={passwordInputChangeHandler}
             onBlur={passwordInputBlurHandler}
             value={enteredPassword}

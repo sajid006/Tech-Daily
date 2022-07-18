@@ -1,8 +1,10 @@
 import React from "react";
-import { Card } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
+import Card from "../../UI/Card";
 import classes from "./StoryItem.module.css";
 import StoryItemRating from "./StoryItemRating";
 const StoryItem = (props) => {
+  const navigate = useNavigate();
   return (
     <Card>
       <li className={classes.Story}>
@@ -10,7 +12,7 @@ const StoryItem = (props) => {
           <h3>{props.name}</h3>
           <h4>{props.author}</h4>
           <div className={classes.description}>{props.description}</div>
-          <button>See More</button>
+          <button onClick={() => navigate(`/stories/${props.id}`)}>See More</button>
         </div>
         <div>
           <StoryItemRating />

@@ -1,0 +1,11 @@
+Pagination
+Footer
+Rating
+User List
+User specific stories
+Post story
+// 404 not found
+About us
+Token stored in cookie (HTTP only)
+Search story
+sort by

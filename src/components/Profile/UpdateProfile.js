@@ -1,60 +1,33 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import Modal from "../../UI/Modal";
+import Modal from "../UI/Modal";
 const axios = require("axios").default;
 const apiUrl = "http://localhost:3000/api/v1/";
-const Signup = (props) => {
-  const [enteredUsername, setEnteredUsername] = useState("");
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredEmail, setEnteredEmail] = useState("");
+
+const UpdateProfile = (props) => {
+  const [enteredName, setEnteredName] = useState(props.name);
+  const [enteredEmail, setEnteredEmail] = useState(props.email);
   const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredUsernameTouched, setEnteredUsernameTouched] = useState(false);
-  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
-  const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
+  const [enteredNameTouched, setEnteredNameTouched] = useState(true);
+  const [enteredEmailTouched, setEnteredEmailTouched] = useState(true);
   const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
   const [errMessage, setErrMessage] = useState("");
-  const [signupMessage, setSignupMessage] = useState(false);
-  /*
-    const [articles, setArticles] = useState([]);
-  useEffect( () => { 
-      async function fetchData() {
-          try {
-              const res = await axios.get('http://localhost:3000/api/v1/articles'); 
-              setArticles(res.data);
-          } catch (err) {
-              console.log(err);
-          }
-      }
-      fetchData();
-  }, []);
-  */
-  const navigate = useNavigate();
-  const enteredUsernameIsValid = enteredUsername.trim() !== "";
+  const [updateMessage, setUpdateMessage] = useState(false);
   const enteredNameIsValid = enteredName.trim() !== "";
   const enteredEmailIsValid = enteredEmail.trim() !== "";
   const enteredPasswordIsValid = enteredPassword.trim() !== "";
-  const usernameInputIsInvalid =
-    !enteredUsernameIsValid && enteredUsernameTouched;
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
   const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
   const passwordInputIsInvalid =
     !enteredPasswordIsValid && enteredPasswordTouched;
+    const user = localStorage.getItem("user");
+    const userToken = JSON.parse(user).accessToken;
 
   let formIsValid = false;
 
-  if (
-    enteredUsernameIsValid &&
-    enteredPasswordIsValid &&
-    enteredEmailIsValid &&
-    enteredNameIsValid
-  ) {
+  if (enteredPasswordIsValid && enteredEmailIsValid && enteredNameIsValid) {
     formIsValid = true;
   }
-
-  const usernameInputChangeHandler = (event) => {
-    setEnteredUsername(event.target.value);
-  };
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
@@ -65,10 +38,6 @@ const Signup = (props) => {
   };
   const passwordInputChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
-  };
-
-  const usernameInputBlurHandler = (event) => {
-    setEnteredUsernameTouched(true);
   };
 
   const nameInputBlurHandler = (event) => {
@@ -86,13 +55,11 @@ const Signup = (props) => {
   const FormSubmissionHandler = async (event) => {
     event.preventDefault();
 
-    setEnteredUsernameTouched(true);
     setEnteredNameTouched(true);
     setEnteredEmailTouched(true);
     setEnteredPasswordTouched(true);
 
     if (
-      !enteredUsernameIsValid ||
       !enteredPasswordIsValid ||
       !enteredNameIsValid ||
       !enteredEmailIsValid
@@ -101,45 +68,38 @@ const Signup = (props) => {
     } else {
       async function fetchData() {
         try {
-          const res = await axios.post(apiUrl + "users", {
-            username: enteredUsername,
-            name: enteredName,
-            email: enteredEmail,
-            password: enteredPassword,
-          });
-          setSignupMessage(res.data);
-          console.log(res.data.message);
-          localStorage.setItem("user", JSON.stringify(res.data));
-          navigate("/home");
-          window.location.reload();
+          const res = await axios.patch(
+            apiUrl + `users/${props.username}`,
+            {
+              name: enteredName,
+              email: enteredEmail,
+              password: enteredPassword,
+            },
+            {
+              headers: {
+                Authorization: "Bearer " + userToken,
+              },
+            }
+          );
+          setUpdateMessage(res.data);
+          console.log(res.data);
+          props.onClose();
         } catch (err) {
           console.log(err.response.data);
           setErrMessage(err.response.data.message);
         }
       }
       await fetchData();
-      console.log(signupMessage);
+      console.log(updateMessage);
     }
 
-    console.log(enteredUsername);
     console.log(enteredName);
     console.log(enteredEmail);
     console.log(enteredPassword);
-
-    // usernameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
-    // setEnteredUsername("");
-    // setEnteredUsernameTouched(false);
-    // setEnteredName("");
-    // setEnteredNameTouched(false);
-    // setEnteredEmail("");
-    // setEnteredEmailTouched(false);
     setEnteredPassword("");
     setEnteredPasswordTouched(false);
   };
 
-  const usernameInputClasses = usernameInputIsInvalid
-    ? "form-control invalid"
-    : "form-control";
   const nameInputClasses = nameInputIsInvalid
     ? "form-control invalid"
     : "form-control";
@@ -152,20 +112,7 @@ const Signup = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={FormSubmissionHandler}>
-      <h3>Sign Up</h3>
-        <div className={usernameInputClasses}>
-          <label htmlFor="name">Username</label>
-          <input
-            type="text"
-            id="Username"
-            onChange={usernameInputChangeHandler}
-            onBlur={usernameInputBlurHandler}
-            value={enteredUsername}
-          />
-          {usernameInputIsInvalid && (
-            <p className="error-text">Username must not be empty.</p>
-          )}
-        </div>
+        <h3>Update Profile of {props.username}</h3>
         <div className={nameInputClasses}>
           <label htmlFor="name">Name</label>
           <input
@@ -221,4 +168,4 @@ const Signup = (props) => {
   );
 };
 
-export default Signup;
+export default UpdateProfile;
