@@ -9,3 +9,4 @@ About us
 Token stored in cookie (HTTP only)
 Search story
 sort by
+story update, delete

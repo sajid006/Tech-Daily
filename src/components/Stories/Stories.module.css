@@ -1,8 +1,7 @@
 .Stories {
-  max-width: 100rem;
+  margin-top: 10rem;
   width: 90%;
-  margin: 10rem auto;
-  animation: Stories-appear 1s ease-out forwards;
+  margin-left: 5%;
 }
 
 .Stories ul {
@@ -11,8 +10,9 @@
   padding: 0;
   max-height: 400px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
-
+/*
 @keyframes Stories-appear {
   from {
     opacity: 0;
@@ -24,3 +24,4 @@
     transform: translateY(0);
   }
 }
+*/

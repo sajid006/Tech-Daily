@@ -24,7 +24,7 @@ function Common(props) {
           </div>
         )}
 
-        <div>
+        <div style={{width:"100%"}}>
           {props.val()}
         </div>
       </div>

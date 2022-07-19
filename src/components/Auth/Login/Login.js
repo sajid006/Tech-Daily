@@ -11,6 +11,7 @@ const Login = (props) => {
   const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
   const [errMessage, setErrMessage] = useState("");
   const [loginMessage, setLoginMessage] = useState(false);
+
   /*
     const [articles, setArticles] = useState([]);
   useEffect( () => { 
@@ -69,13 +70,13 @@ const Login = (props) => {
           const res = await axios.post(apiUrl + "users/login", {
             username: enteredUsername,
             password: enteredPassword,
-          });
+          }, {withCredentials: true});
           setLoginMessage(res.data);
-          console.log(res.data.message);
-          localStorage.setItem("user", JSON.stringify(res.data));
-          window.location.reload();
+          props.isLoggedIn(res.data.username);
+          props.onClose();
+          navigate('/');
         } catch (err) {
-          console.log(err.response.data.message);
+          console.log(err.response.data);
           setErrMessage(err.response.data.message);
         }
       }

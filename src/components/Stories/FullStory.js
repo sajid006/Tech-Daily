@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import SideBar from "../../Home/SideBar";
-import NavHeader from "../Layout/NavHeader";
+import Common from "../../Home/Common";
 import Card from "../UI/Card";
 import OneStory from "./OneStory";
 import classes from './Stories.module.css';
 const axios = require("axios").default;
 
+
 const FullStory = () => {
   const [article, setArticle] = useState(Object);
-  const [sideBarOn, setSideBarOn] = useState(false);
   const [errMessage, setErrMessage] = useState("");
   let urlElement;
   let urlElements = window.location.pathname.split("/");
@@ -27,9 +26,6 @@ const FullStory = () => {
     }
     fetchData();
   }, []);
-  const toggleSideBar = () => {
-    setSideBarOn(!sideBarOn);
-  };
   const Story = (
     <OneStory
       key={article.id}
@@ -37,33 +33,18 @@ const FullStory = () => {
       name={article.title}
       description={article.description}
       author={article.username}
+      createdAt={article.createdAt}
+      updatedAt={article.updatedAt}
     />
   );
-
+    const showFullStory = () => {
+        return (<div className={classes.Stories}>
+          {!errMessage && <section className={classes.Stories}>{Story}</section>}
+          {errMessage && <section style={{align:"center"}} className={classes.Stories}><Card>Story Not Found</Card></section>}
+          </div>);
+    }
   return (
-    <>
-      <NavHeader toggleSideBar={toggleSideBar} />
-      <div style={{ height: "100rem", display: "flex" }}>
-        {sideBarOn && (
-          <div
-            style={{
-              marginTop: "5rem",
-              height: "50%",
-              top: "5rem",
-              position: "sticky",
-              backgroundColor: "black",
-            }}
-          >
-            <SideBar />
-          </div>
-        )}
-        <div>
-        {!errMessage && <section className={classes.Stories}>{Story}</section>}
-        {errMessage && <section style={{align:"center"}} className={classes.Stories}><Card>Story Not Found</Card></section>}
-        </div>
-        
-      </div>
-    </>
+    <Common val={showFullStory} />
   );
 };
 

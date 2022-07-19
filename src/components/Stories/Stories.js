@@ -23,13 +23,17 @@ const AvailableStories =  () => {
       name={Story.title}
       description={Story.description}
       author={Story.username}
+      createdAt={Story.createdAt}
+      updatedAt={Story.updatedAt}
     />
   ));
 
   return (
-    <section className={classes.Stories}>
+
+<div className={classes.Stories}>
       {StoriesList}
-    </section>
+    </div>
+    
   );
 };
 

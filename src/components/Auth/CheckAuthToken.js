@@ -1,17 +1,17 @@
+import Cookies from "universal-cookie";
 const jwt = require("jsonwebtoken");
-function checkAuthToken() {
+
+const checkAuthToken = () => {
     try {
-      const user = localStorage.getItem("user");
-      const userToken = JSON.parse(user).accessToken;
-      console.log(userToken);
-      console.log(process.env.REACT_APP_JWT_SECRET);
+      const cookies = new Cookies();
+      const userToken = cookies.get('user');
       const decoded = jwt.verify(userToken, process.env.REACT_APP_JWT_SECRET)
         .username;
       console.log(decoded);
       return decoded;
     } catch (err) {
       console.log(err);
-      return false;
+      return null;
     }
   }
 

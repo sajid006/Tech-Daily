@@ -12,7 +12,6 @@ const Profile = () => {
   const [update, setUpdate] = useState("");
   const [deleteBar, setDeleteBar] = useState("");
   const [editable, setEditable] = useState(false);
-  const [sideBarOn, setSideBarOn] = useState(false);
   let username, urlElement;
   let urlElements = window.location.pathname.split("/");
   urlElement = urlElements[2];
@@ -47,9 +46,7 @@ const Profile = () => {
   const hideDeleteHandler = () => {
     setDeleteBar(false);
   };
-  const toggleSideBar = () => {
-    setSideBarOn(!sideBarOn);
-  };
+
   const showProfile = () => {
     return (<div className="profile">
     <Card>

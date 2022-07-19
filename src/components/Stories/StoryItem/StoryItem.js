@@ -12,6 +12,8 @@ const StoryItem = (props) => {
           <h3>{props.name}</h3>
           <h4>{props.author}</h4>
           <div className={classes.description}>{props.description}</div>
+          <h6>Posted At: {props.createdAt}</h6>
+          <h6>Updated At: {props.updatedAt}</h6>
           <button onClick={() => navigate(`/stories/${props.id}`)}>See More</button>
         </div>
         <div>

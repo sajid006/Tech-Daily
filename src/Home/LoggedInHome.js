@@ -18,7 +18,7 @@ const LoggedInHome = (props) => {
   };
   return (
     <>
-      {logoutIsShown && <Logout onClose={hideLogoutHandler} />}
+      {logoutIsShown && <Logout onClose={hideLogoutHandler} isLoggedIn={props.isLoggedIn} />}
       <Header
         loggedIn={props.loggedIn}
         onShowLogout={showLogoutHandler}

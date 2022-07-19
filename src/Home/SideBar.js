@@ -23,7 +23,7 @@ const SideBar = () => {
               <a href="/stories">Add a Story</a>
             </CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="fa fa-user">
-            <a href="/profile/sajid2">Author Directory</a>
+            <a href="/profiles">Author Directory</a>
             </CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="credit-card" iconType="solid">
             <a href="/profile/sajid2">About Us</a>

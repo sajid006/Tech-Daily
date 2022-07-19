@@ -3,7 +3,7 @@ import Login from "../components/Auth/Login/Login";
 import Signup from "../components/Auth/Signup/Signup";
 import Header from "../components/Layout/Header";
 
-const LoggedOutHome = (props) => {
+const LoggedOutHome = ({loggedIn , isLoggedIn}) => {
   const [loginIsShown, setLoginIsShown] = useState(false);
   const [signupIsShown, setSignupIsShown] = useState(false);
   const showLoginHandler = () => {
@@ -23,8 +23,8 @@ const LoggedOutHome = (props) => {
   };
   return (
     <>
-      {loginIsShown && <Login onClose={hideLoginHandler} />}
-      {signupIsShown && <Signup onClose={hideSignupHandler} />}
+      {loginIsShown && <Login onClose={hideLoginHandler} loggedIn={loggedIn} isLoggedIn={isLoggedIn}/>}
+      {signupIsShown && <Signup onClose={hideSignupHandler} loggedIn={loggedIn} isLoggedIn={isLoggedIn}/>}
       <Header onShowLogin={showLoginHandler} onShowSignup={showSignupHandler} />
     </>
   );

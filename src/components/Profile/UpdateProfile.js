@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import Cookies from "universal-cookie";
 import Modal from "../UI/Modal";
 const axios = require("axios").default;
 const apiUrl = "http://localhost:3000/api/v1/";
@@ -20,8 +21,9 @@ const UpdateProfile = (props) => {
   const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
   const passwordInputIsInvalid =
     !enteredPasswordIsValid && enteredPasswordTouched;
-    const user = localStorage.getItem("user");
-    const userToken = JSON.parse(user).accessToken;
+  const cookies = new Cookies();
+  const userToken = cookies.get('user');
+
 
   let formIsValid = false;
 

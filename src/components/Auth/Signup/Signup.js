@@ -15,20 +15,6 @@ const Signup = (props) => {
   const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
   const [errMessage, setErrMessage] = useState("");
   const [signupMessage, setSignupMessage] = useState(false);
-  /*
-    const [articles, setArticles] = useState([]);
-  useEffect( () => { 
-      async function fetchData() {
-          try {
-              const res = await axios.get('http://localhost:3000/api/v1/articles'); 
-              setArticles(res.data);
-          } catch (err) {
-              console.log(err);
-          }
-      }
-      fetchData();
-  }, []);
-  */
   const navigate = useNavigate();
   const enteredUsernameIsValid = enteredUsername.trim() !== "";
   const enteredNameIsValid = enteredName.trim() !== "";
@@ -106,12 +92,11 @@ const Signup = (props) => {
             name: enteredName,
             email: enteredEmail,
             password: enteredPassword,
-          });
+          }, {withCredentials: true});
           setSignupMessage(res.data);
-          console.log(res.data.message);
-          localStorage.setItem("user", JSON.stringify(res.data));
-          navigate("/home");
-          window.location.reload();
+          props.onClose();
+          props.isLoggedIn(res.data.username);
+          navigate('/');
         } catch (err) {
           console.log(err.response.data);
           setErrMessage(err.response.data.message);

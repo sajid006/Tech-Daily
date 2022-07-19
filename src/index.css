@@ -120,6 +120,7 @@ button:disabled:active {
 .form-cancel {
   background-color: #ccc;
   border-color: #ccc;
+  color: black;
 }
 .form-cancel:hover {
   background-color: #ccc;

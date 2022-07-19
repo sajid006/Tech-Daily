@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 import Modal from "../UI/Modal";
 const axios = require("axios").default;
 const apiUrl = "http://localhost:3000/api/v1/";
 const DeleteAccount = (props) => {
   const navigate = useNavigate();
-  const user = localStorage.getItem("user");
-  const userToken = JSON.parse(user).accessToken;
+  const cookies = new Cookies();
+  const userToken = cookies.get('user');
+
   const [errMessage, setErrMessage] = useState("");
   const deleteUserHandler = async() => {
     async function deleteData() {
       try {
-        const res = await axios.delete(
+        await axios.delete(
           apiUrl + `users/${props.username}`,
           {
             headers: {
@@ -21,7 +23,7 @@ const DeleteAccount = (props) => {
           }
         );
         props.onClose();
-        localStorage.removeItem("user");
+        cookies.remove('user');
         navigate("/");
       } catch (err) {
         console.log(err.response.data);
