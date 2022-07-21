@@ -18,7 +18,7 @@ const SideBar = () => {
         }}
       >
         <CDBSidebarContent>
-          <CDBSidebarMenu>
+          <CDBSidebarMenu style={{position: "fixed"}}>
             <CDBSidebarMenuItem icon="fa fa-edit">
               <a href="/stories">Add a Story</a>
             </CDBSidebarMenuItem>
@@ -26,7 +26,7 @@ const SideBar = () => {
             <a href="/profiles">Author Directory</a>
             </CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="credit-card" iconType="solid">
-            <a href="/profile/sajid2">About Us</a>
+            <a href="/about">About Us</a>
             </CDBSidebarMenuItem>
           </CDBSidebarMenu>
         </CDBSidebarContent>

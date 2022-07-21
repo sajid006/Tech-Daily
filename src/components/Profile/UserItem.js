@@ -1,4 +1,5 @@
 import React from "react";
+import DateFormating from "../../DateFormatting";
 import Card from "../UI/Card";
 import classes from "./UserItem.module.css";
 const StoryItem = (props) => {
@@ -11,8 +12,8 @@ const StoryItem = (props) => {
         <h3>Username: <a href={profileLink}>{props.username}</a></h3>
         <h3>Name: {props.name}</h3>
         <h3>Email: {props.email}</h3>
-        <h3>Account created at: {props.createdAt}</h3>
-        <h3>Account last updated: {props.updatedAt}</h3>
+        <h3>Account created at: {DateFormating(props.createdAt)}</h3>
+        <h3>Account last updated: {DateFormating(props.updatedAt)}</h3>
         </div>
       </li>
     </Card>

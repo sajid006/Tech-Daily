@@ -30,7 +30,7 @@ const NavHeader = (props) => {
         {!loggedIn ? (
           <LoggedOutHome loggedIn={loggedIn} isLoggedIn={isLoggedIn} />
         ) : (
-          <LoggedInHome loggedIn={loggedIn} isLoggedIn={isLoggedIn} />
+          <LoggedInHome loggedIn={loggedIn} resetLoggedIn={resetLoggedIn} />
         )}
       </div>
     </div>

@@ -11,21 +11,6 @@ const Login = (props) => {
   const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
   const [errMessage, setErrMessage] = useState("");
   const [loginMessage, setLoginMessage] = useState(false);
-
-  /*
-    const [articles, setArticles] = useState([]);
-  useEffect( () => { 
-      async function fetchData() {
-          try {
-              const res = await axios.get('http://localhost:3000/api/v1/articles'); 
-              setArticles(res.data);
-          } catch (err) {
-              console.log(err);
-          }
-      }
-      fetchData();
-  }, []);
-  */
   const navigate = useNavigate();
   const enteredUsernameIsValid = enteredUsername.trim() !== "";
   const enteredPasswordIsValid = enteredPassword.trim() !== "";

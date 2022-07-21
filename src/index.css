@@ -10,13 +10,13 @@ html {
 
 body {
   margin: 0;
-  background-color: #ffffff;
+  background-color: #6967e0;
 }
 
 .profile {
   margin-top: 10rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  width: 90%;
+  margin-left: 5%;
 }
 .app {
   width: 90%;

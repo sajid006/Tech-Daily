@@ -1,0 +1,152 @@
+.main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 2rem;
+}
+
+.linkClass {
+  height: fit-content;
+  width: 100%;
+}
+
+/*main pagination container*/
+.container {
+  padding-top: 3rem;
+  text-align: center;
+  list-style-type: none;
+}
+
+/*li of the prev*/
+.previousClass {
+  display: inline-block;
+}
+
+/*li of the page*/
+.pageClass {
+  display: inline-block;
+}
+
+/*li of the break*/
+.breakClass {
+  display: inline-block;
+}
+
+/*li of the next*/
+.nextClass {
+  display: inline-block;
+}
+
+/*li of the active page*/
+.activeClass {
+  display: inline-block;
+}
+
+/*prev and next li on disabled*/
+.disabledClass {
+  display: inline-block;
+}
+
+/*a of the prev*/
+.previousLinkClass {
+  padding: 0.5rem;
+  margin: 0rem 1rem;
+  display: inline-block;
+  cursor: pointer;
+  background-color: aqua;
+  text-decoration: none;
+  border: 1px solid var(--pagiantionBorder);
+  border-radius: 10px;
+  box-shadow: 0 0 1px 0 var(--boxShadowColor);
+  min-width: 4rem;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--paginationColor);
+}
+
+.previousLinkClass:hover {
+  background-color: rgb(21, 198, 198);
+  color: white;
+}
+
+/*a of the page*/
+.pageLinkClass {
+  padding: 0.5rem;
+  margin: 0rem 1rem;
+  display: inline-block;
+  cursor: pointer;
+  background-color: aqua;
+  text-decoration: none;
+  border: 1px solid var(--pagiantionBorder);
+  border-radius: 10px;
+  box-shadow: 0 0 1px 0 var(--boxShadowColor);
+  min-width: 4rem;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--paginationColor);
+}
+
+.pageLinkClass:hover {
+  background-color: rgb(21, 198, 198);
+  color: white;
+}
+
+/*a of the break*/
+.breakLinkClass {
+  padding: 0.5rem;
+  margin: 0rem 1rem;
+  display: inline-block;
+  cursor: pointer;
+  background-color: aqua;
+  text-decoration: none;
+  border: 1px solid var(--pagiantionBorder);
+  border-radius: 10px;
+  box-shadow: 0 0 1px 0 var(--boxShadowColor);
+  min-width: 4rem;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--paginationColor);
+}
+
+/*a of the next*/
+.nextLinkClass {
+  padding: 0.5rem;
+  margin: 0rem 1rem;
+  display: inline-block;
+  cursor: pointer;
+  background-color: aqua;
+  text-decoration: none;
+  border: 1px solid var(--pagiantionBorder);
+  border-radius: 10px;
+  box-shadow: 0 0 1px 0 var(--boxShadowColor);
+  min-width: 4rem;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--paginationColor);
+  text-decoration: none;
+}
+
+.nextLinkClass:hover {
+  background-color: rgb(21, 198, 198);
+  color: white;
+}
+
+/*a of the active page*/
+.activeLinkClass {
+  background-color: aquamarine;
+  text-decoration: none;
+}
+
+.activeLinkClass:hover {
+  background-color: rgb(21, 198, 198);
+  color: white;
+}
+
+/*prev and next button a on disabled*/
+.disabledLinkClass {
+  display: none;
+  color: var(--disabledLinkColor);
+  background-color: var(--disabledLinkBG);
+  border-color: var(--pagiantionBorder);
+  cursor: default;
+}

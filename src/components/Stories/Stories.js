@@ -1,40 +1,41 @@
 import React, { useEffect, useState } from "react";
-import classes from './Stories.module.css';
-import StoryItem from './StoryItem/StoryItem';
-const axios = require('axios').default;
+import PaginatedItems from "../Pagination/Pagination";
+import classes from "./Stories.module.css";
+import StoryItem from "./StoryItem/StoryItem";
+const axios = require("axios").default;
 
-const AvailableStories =  () => {
+const Stories = (props) => {
   const [articles, setArticles] = useState([]);
-  useEffect( () => { 
-      async function fetchData() {
-          try {
-              const res = await axios.get('http://localhost:3000/api/v1/articles'); 
-              setArticles(res.data);
-          } catch (err) {
-              console.log(err);
-          }
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await axios.get(props.link);
+        res.data.reverse();
+        setArticles(res.data);
+      } catch (err) {
+        console.log(err);
       }
-      fetchData();
-  }, []);
+    }
+    fetchData();
+  }, [props.link]);
+
   const StoriesList = articles.map((Story) => (
     <StoryItem
       key={Story.id}
       id={Story.id}
       name={Story.title}
       description={Story.description}
-      author={Story.username}
+      username={Story.username}
       createdAt={Story.createdAt}
       updatedAt={Story.updatedAt}
     />
   ));
 
   return (
-
-<div className={classes.Stories}>
-      {StoriesList}
+    <div className={classes.Stories}>
+      <PaginatedItems items={StoriesList}></PaginatedItems>
     </div>
-    
   );
 };
 
-export default AvailableStories;
+export default Stories;

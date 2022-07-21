@@ -1,12 +1,16 @@
-Pagination
-Footer
+// Pagination
+// Footer
 Rating
-User List
-User specific stories
-Post story
+// User List
+// User specific stories
+// Post story
 // 404 not found
-About us
-Token stored in cookie (HTTP only)
-Search story
+// About us
+// Token stored in cookie (HTTP only)
+// Search story
 sort by
-story update, delete
+// story update, delete
+Download as
+// Only 200 characters in first page for a story
+// change date and time formatting
+usecontext

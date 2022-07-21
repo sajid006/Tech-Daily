@@ -8,7 +8,7 @@ const Logout = (props) => {
   const logoutHandler = () => {
     const cookies = new Cookies();
     cookies.remove('user');
-    props.isLoggedIn("");
+    props.resetLoggedIn();
     props.onClose();
     navigate('/');
   };
