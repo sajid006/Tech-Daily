@@ -16,7 +16,6 @@ function Common(props) {
         {sideBarOn && (
           <div style={{
             marginTop: "5rem",
-            height: "40rem",
             top: "5rem",
             position: "sticky",
             backgroundColor: "black"

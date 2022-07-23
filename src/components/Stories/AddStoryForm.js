@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "universal-cookie";
-import checkAuthToken from "../Auth/CheckAuthToken";
+import { useAuth } from "../../Contexts/AuthContext";
 import classes from './AddStoryForm.module.css';
 
 const axios = require("axios").default;
@@ -12,6 +11,7 @@ const AddStoryForm = () => {
   const [enteredTitleTouched, setEnteredTitleTouched] = useState(false);
   const [enteredDescriptionTouched, setEnteredDescriptionTouched] = useState(false);
   const [errMessage, setErrMessage] = useState("");
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
 
   
@@ -55,21 +55,15 @@ const descriptionInputBlurHandler = (event) => {
       } else {
         async function postData() {
             try {
-              const cookies = new Cookies();
-              const userToken = cookies.get('user');
-              const username = checkAuthToken();
+              
+              const username = currentUser;
               const res = await axios.post(
                 apiUrl + "articles",
                 {
                   username: username,
                   title: enteredTitle,
                   description: enteredDescription,
-                },
-                {
-                  headers: {
-                    Authorization: "Bearer " + userToken,
-                  },
-                }
+                }, { withCredentials: true }
               );
               const ID = res.data.id;
               console.log(ID);

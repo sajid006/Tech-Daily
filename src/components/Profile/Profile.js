@@ -2,24 +2,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext";
 import DateFormating from "../../DateFormatting";
 import Common from "../../Home/Common";
-import checkAuthToken from "../Auth/CheckAuthToken";
 import Stories from "../Stories/Stories";
 import Card from "../UI/Card";
 import DeleteAccount from "./DeleteAccount";
 import UpdateProfile from "./UpdateProfile";
 const axios = require("axios").default;
-
 const Profile = () => {
   const [user, setUser] = useState("");
   const [update, setUpdate] = useState("");
   const [deleteBar, setDeleteBar] = useState("");
   const [editable, setEditable] = useState(false);
   const {id} = useParams();
-  const [api, setApi] = useState("");
-  let username;
-  username = checkAuthToken();
+  const [api, setApi] = useState(`http://localhost:3000/api/v1/users/${id}/articles`);
+  const { currentUser, verify } = useAuth();
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -34,9 +33,11 @@ const Profile = () => {
     }
     setApi(`http://localhost:3000/api/v1/users/${id}/articles`);
     fetchData();
-    
-    if (id === username) setEditable(true);
-  }, [update, id]);
+    verify();
+    console.log(id);
+    if (id === currentUser) setEditable(true);
+    else setEditable(false);
+  }, [update, id, currentUser]);
   const showUpdateHandler = () => {
     setUpdate(true);
   };
@@ -90,13 +91,13 @@ const Profile = () => {
       {update && (
         <UpdateProfile
           onClose={hideUpdateHandler}
-          username={username}
+          username={currentUser}
           email={user.email}
           name={user.name}
         />
       )}
       {deleteBar && (
-        <DeleteAccount onClose={hideDeleteHandler} username={username} />
+        <DeleteAccount onClose={hideDeleteHandler} username={currentUser} />
       )}
       <Common val={showProfile} />
     </>

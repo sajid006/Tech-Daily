@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import Common from "../../Home/Common";
+import PaginatedItems from "../Pagination/Pagination";
 import classes from './AllProfiles.module.css';
 import UserItem from './UserItem';
 const axios = require("axios").default;
@@ -33,7 +34,7 @@ const AllProfiles = () => {
     />
   ));
   const showUsersList = () => {
-    return (<div className={classes.AllProfiles}>{UsersList}</div>)
+    return (<div className={classes.AllProfiles}><PaginatedItems items={UsersList}></PaginatedItems></div>)
   }
    
   return (

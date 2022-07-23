@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../Contexts/AuthContext";
 import Modal from "../../UI/Modal";
 const axios = require("axios").default;
 const apiUrl = "http://localhost:3000/api/v1/";
 const Signup = (props) => {
+  const {signup} = useAuth();
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -87,15 +89,15 @@ const Signup = (props) => {
     } else {
       async function fetchData() {
         try {
-          const res = await axios.post(apiUrl + "users", {
+          const userDetails = {
             username: enteredUsername,
             name: enteredName,
             email: enteredEmail,
             password: enteredPassword,
-          }, {withCredentials: true});
+          };
+          const res = await signup(userDetails);
           setSignupMessage(res.data);
           props.onClose();
-          props.isLoggedIn(res.data.username);
           navigate('/');
         } catch (err) {
           console.log(err.response.data);

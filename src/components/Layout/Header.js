@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext";
 import classes from "./Header.module.css";
 import LoggedInHeader from "./LoggedInHeader";
 import LoggedOutHeader from "./LoggedOutHeader";
 const Header = (props) => {
   const navigate = useNavigate();
+  const {currentUser} = useAuth();
   return (
     <Fragment>
       <header className={classes.header}>
@@ -15,15 +17,14 @@ const Header = (props) => {
           </button>
           
 
-        {!props.loggedIn && (
+        {!currentUser && (
           <LoggedOutHeader
             onShowLogin={props.onShowLogin}
             onShowSignup={props.onShowSignup}
           />
         )}
-        {props.loggedIn && (
+        {currentUser && (
           <LoggedInHeader
-            loggedIn={props.loggedIn}
             onShowLogout={props.onShowLogout}
             onClickProfile={props.onClickProfile}
           />

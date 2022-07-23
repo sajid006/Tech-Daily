@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "universal-cookie";
+
 import Modal from "../UI/Modal";
 import classes from './AddStoryForm.module.css';
 const axios = require("axios").default;
 const apiUrl = "http://localhost:3000/api/v1/";
-const EditStoryForm= (props) => {
+const UpdateStoryForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState(props.title);
   const [enteredDescription, setEnteredDescription] = useState(props.description);
   const [enteredTitleTouched, setEnteredTitleTouched] = useState(true);
   const [enteredDescriptionTouched, setEnteredDescriptionTouched] = useState(true);
   const [errMessage, setErrMessage] = useState("");
   const navigate = useNavigate();
-
-  
-
   const enteredTitleIsValid = enteredTitle.trim() !== "";
   const enteredDescriptionIsValid = enteredDescription.trim() !=="";
   const titleInputIsInvalid =
@@ -54,19 +51,13 @@ const descriptionInputBlurHandler = (event) => {
       } else {
         async function postData() {
             try {
-              const cookies = new Cookies();
-              const userToken = cookies.get('user');
+              
               const res = await axios.patch(
                 apiUrl + `articles/${props.id}`,
                 {
                   title: enteredTitle,
                   description: enteredDescription,
-                },
-                {
-                  headers: {
-                    Authorization: "Bearer " + userToken,
-                  },
-                }
+                }, { withCredentials: true }
               );
               props.onClose();
               props.toggleSetUpdated();
@@ -118,4 +109,4 @@ const descriptionInputBlurHandler = (event) => {
    </Modal> 
     );
 };
-export default EditStoryForm;
+export default UpdateStoryForm ;

@@ -13,14 +13,13 @@ const SideBar = () => {
       <CDBSidebar
         style={{
           backgroundColor: "black",
-          height: "20rem",
           overflowX: "hidden",
         }}
       >
         <CDBSidebarContent>
           <CDBSidebarMenu style={{position: "fixed"}}>
             <CDBSidebarMenuItem icon="fa fa-edit">
-              <a href="/stories">Add a Story</a>
+              <a href="/stories/new">Add a Story</a>
             </CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="fa fa-user">
             <a href="/profiles">Author Directory</a>

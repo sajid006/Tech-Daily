@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { useAuth } from "../../Contexts/AuthContext";
 import DateFormating from "../../DateFormatting";
-import checkAuthToken from "../Auth/CheckAuthToken";
 import Card from "../UI/Card";
 import DeleteStoryForm from "./DeleteStoryForm";
-import EditStoryForm from "./EditStoryForm";
 import classes from "./StoryItem/StoryItem.module.css";
 import StoryItemRating from "./StoryItem/StoryItemRating";
+import UpdateStoryForm from "./UpdateStoryForm";
+const axios = require("axios").default;
 const OneStory = (props) => {
   const [editable, setEditable] = useState(false);
   const [editForm, setEditForm] = useState(false);
   const [deleteForm, setDeleteForm] = useState(false);
+  const { verify, currentUser} = useAuth();
+  
   useEffect(() => {
-    const userFromToken = checkAuthToken();
-    console.log(userFromToken);
     console.log(props.username);
-    if (userFromToken === props.username) {
+    verify();
+    if (currentUser === props.username) {
       setEditable(true);
     }
-  }, []);
+    else setEditable(false);
+  }, [props.username, currentUser]);
 
   const showEditStory = () => {
     setEditForm(true);
@@ -46,7 +49,7 @@ const OneStory = (props) => {
   const updatedAt = DateFormating(props.updatedAt);
   return (
     <div>
-    {editForm && <EditStoryForm title={props.title} description={props.description} onClose={closeEditStory} id={props.id} toggleSetUpdated={props.toggleSetUpdated}/>}
+    {editForm && <UpdateStoryForm title={props.title} description={props.description} onClose={closeEditStory} id={props.id} toggleSetUpdated={props.toggleSetUpdated}/>}
     {deleteForm && <DeleteStoryForm onClose={closeDeleteStory} id={props.id}/>}
    
       <Card>

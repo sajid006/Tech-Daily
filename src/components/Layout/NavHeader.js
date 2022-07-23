@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useAuth } from "../../Contexts/AuthContext";
 import LoggedInHome from "../../Home/LoggedInHome";
 import LoggedOutHome from "../../Home/LoggedOutHome";
-import checkAuthToken from "../Auth/CheckAuthToken";
-
+const axios = require("axios").default;
+const api = "http://localhost:3000/api/v1/";
 const NavHeader = (props) => {
-  const [loggedIn, isLoggedIn] = useState("");
-  const setLoggedIn = (value) => {
-    isLoggedIn(value);
-  };
-  const resetLoggedIn = () => {
-    isLoggedIn("");
-  };
+  const {verify, currentUser} = useAuth();
+  // const setLoggedIn = (value) => {
+  //   isLoggedIn(value);
+  // };
+  // const resetLoggedIn = () => {
+  //   isLoggedIn("");
+  // };
   useEffect(() => {
-    const username = checkAuthToken();
-    console.log("yo");
-    if (username) setLoggedIn(username);
-    else resetLoggedIn();
-  }, [loggedIn]);
+    verify();
+  }, [currentUser]);
 
   return (
     <div style={{ display: "flex" }}>
@@ -25,14 +23,7 @@ const NavHeader = (props) => {
           <i className="fa fa-fw fa-bars"></i>
         </button>
       </div>
-
-      <div>
-        {!loggedIn ? (
-          <LoggedOutHome loggedIn={loggedIn} isLoggedIn={isLoggedIn} />
-        ) : (
-          <LoggedInHome loggedIn={loggedIn} resetLoggedIn={resetLoggedIn} />
-        )}
-      </div>
+      <div>{currentUser ? <LoggedInHome /> : <LoggedOutHome />}</div>
     </div>
   );
 };

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logout from "../components/Auth/Logout";
 import Header from "../components/Layout/Header";
-const LoggedInHome = (props) => {
+import { useAuth } from "../Contexts/AuthContext";
+const LoggedInHome = () => {
   const [logoutIsShown, setLogoutIsShown] = useState(false);
+  const { currentUser} = useAuth();
   let navigate = useNavigate();
   const showLogoutHandler = () => {
     setLogoutIsShown(true);
@@ -14,13 +16,12 @@ const LoggedInHome = (props) => {
   };
 
   const navigateToProfile = () => {
-    navigate(`/profiles/${props.loggedIn}`);
+    navigate(`/profiles/${currentUser}`);
   };
   return (
     <>
-      {logoutIsShown && <Logout onClose={hideLogoutHandler} resetLoggedIn={props.resetLoggedIn} />}
+      {logoutIsShown && <Logout onClose={hideLogoutHandler}/>}
       <Header
-        loggedIn={props.loggedIn}
         onShowLogout={showLogoutHandler}
         onClickProfile={navigateToProfile}
       />

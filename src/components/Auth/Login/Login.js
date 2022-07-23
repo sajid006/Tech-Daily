@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../Contexts/AuthContext";
 import Modal from "../../UI/Modal";
 const axios = require("axios").default;
 const apiUrl = "http://localhost:3000/api/v1/";
 const Login = (props) => {
+  const { login } = useAuth();
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredUsernameTouched, setEnteredUsernameTouched] = useState(false);
@@ -52,12 +54,13 @@ const Login = (props) => {
     } else {
       async function fetchData() {
         try {
-          const res = await axios.post(apiUrl + "users/login", {
+          const userDetails = {
             username: enteredUsername,
             password: enteredPassword,
-          }, {withCredentials: true});
+          };
+          const res = await login(userDetails);
           setLoginMessage(res.data);
-          props.isLoggedIn(res.data.username);
+          console.log(res.data);
           props.onClose();
           navigate('/');
         } catch (err) {
