@@ -3,8 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Contexts/AuthContext";
 import Modal from "../../UI/Modal";
-const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
+import classes from './Login.module.css';
+
 const Login = (props) => {
   const { login } = useAuth();
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -38,8 +38,7 @@ const Login = (props) => {
   const usernameInputBlurHandler = (event) => {
     setEnteredUsernameTouched(true);
   };
-
-  // const navigate = useNavigate('/produce');
+  
   const passwordInputBlurHandler = (event) => {
     setEnteredPasswordTouched(true);
   };
@@ -68,26 +67,19 @@ const Login = (props) => {
           setErrMessage(err.response.data.message);
         }
       }
-      await fetchData();
+      fetchData();
       console.log(loginMessage);
     }
 
     console.log(enteredUsername);
     console.log(enteredPassword);
 
-    // usernameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
-
     setEnteredPassword("");
     setEnteredPasswordTouched(false);
   };
 
-  const usernameInputClasses = usernameInputIsInvalid
-    ? "form-control invalid"
-    : "form-control";
-
-  const passwordInputClasses = passwordInputIsInvalid
-    ? "form-control invalid"
-    : "form-control";
+  const usernameInputClasses = usernameInputIsInvalid ? classes['form-control invalid'] : classes['form-control'];
+  const passwordInputClasses = passwordInputIsInvalid ? classes['form-control invalid'] : classes['form-control'];
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={FormSubmissionHandler}>

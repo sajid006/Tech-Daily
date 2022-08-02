@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Login from "../components/Auth/Login/Login";
-import Signup from "../components/Auth/Signup/Signup";
-import Header from "../components/Layout/Header";
+import Login from "../Auth/Login/Login";
+import Signup from "../Auth/Signup/Signup";
+import Header from "../Header/Header";
 
 const LoggedOutHome = () => {
   const [loginIsShown, setLoginIsShown] = useState(false);

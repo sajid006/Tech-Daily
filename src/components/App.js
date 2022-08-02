@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import AboutUs from "./AboutUs";
-import AllProfiles from "./components/Profile/AllProfiles";
-import Profile from "./components/Profile/Profile";
-import AddStory from "./components/Stories/AddStory";
-import FullStory from "./components/Stories/FullStory";
-import SearchedStories from "./components/Stories/SearchedStories";
-import { AuthContextProvider } from "./Contexts/AuthContext";
+import Footer from "../components/Footer/Footer";
+import { AuthContextProvider } from "../Contexts/AuthContext";
 import Home from "./Home/Home";
-import "./index.css";
-import NotFound from "./NotFound";
+import AllProfiles from "./Profile/AllProfiles";
+import Profile from "./Profile/Profile";
+import AddStory from "./Stories/AddStory";
+import FullStory from "./Stories/FullStory";
+import SearchedStories from "./Stories/SearchedStories";
+import AboutUs from "./Views/AboutUs";
+import NotFound from "./Views/NotFound";
 
 const App = () => {
   return (
@@ -31,7 +31,9 @@ const App = () => {
           <Route exact path="/about" element={<AboutUs />}></Route>
         </Routes>
       </AuthContextProvider>
+      <Footer/>
     </Router>
+    
   );
 };
 

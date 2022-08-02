@@ -26,6 +26,11 @@
   height: 3rem;
   border-color: blue;
 }
+.dropdown {
+  padding-top: 4rem;
+  margin-left: 89%;
+  margin-bottom: -9rem;
+}
 /*
 @keyframes Stories-appear {
   from {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import classes from './Pagination.module.css';
+import classes from "./Pagination.module.css";
 
-const PaginatedItems = ({ items = [], children }) =>{
+const PaginatedItems = ({ items = [], children }) => {
   const itemsPerPage = 3;
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
@@ -21,27 +21,24 @@ const PaginatedItems = ({ items = [], children }) =>{
 
   return (
     <>
-      <div>
-        {currentItems.map((Story) => (
-          <div key={Story.id}>
-            {Story}
-          </div>
-        ))}
-      </div>
+      {currentItems && currentItems.map((Story) => (
+        <div key={Story.id}>{Story}</div>
+      ))}
+
       <ReactPaginate
-      className={`${classes.container}`}
-      previousClassName={`${classes.previousClass}`}
-      pageClassName={`${classes.pageClass}`}
-      breakClassName={`${classes.breakClass}`}
-      nextClassName={`${classes.nextClass}`}
-      activeClassName={`${classes.activeClass}`}
-      disabledClassName={`${classes.disabledClass}`}
-      previousLinkClassName={`${classes.previousLinkClass}`}
-      pageLinkClassName={`${classes.pageLinkClass}`}
-      breakLinkClassName={`${classes.breakLinkClass}`}
-      nextLinkClassName={`${classes.nextLinkClass}`}
-      activeLinkClassName={`${classes.activeLinkClass}`}
-      disabledLinkClassName={`${classes.disabledLinkClass}`}
+        className={`${classes.container}`}
+        previousClassName={`${classes.previousClass}`}
+        pageClassName={`${classes.pageClass}`}
+        breakClassName={`${classes.breakClass}`}
+        nextClassName={`${classes.nextClass}`}
+        activeClassName={`${classes.activeClass}`}
+        disabledClassName={`${classes.disabledClass}`}
+        previousLinkClassName={`${classes.previousLinkClass}`}
+        pageLinkClassName={`${classes.pageLinkClass}`}
+        breakLinkClassName={`${classes.breakLinkClass}`}
+        nextLinkClassName={`${classes.nextLinkClass}`}
+        activeLinkClassName={`${classes.activeLinkClass}`}
+        disabledLinkClassName={`${classes.disabledLinkClass}`}
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
@@ -52,7 +49,7 @@ const PaginatedItems = ({ items = [], children }) =>{
       />
     </>
   );
-}
+
+};
 
 export default PaginatedItems;
-

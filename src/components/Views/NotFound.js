@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "./components/UI/Card";
-import Common from "./Home/Common";
+import Common from "../Common";
+import Card from "../UI/Card";
 
 const NotFound = () => {
     const NotFoundMessage = () => {

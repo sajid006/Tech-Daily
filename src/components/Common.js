@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
-import Footer from "../components/Footer/Footer";
-import NavHeader from "../components/Layout/NavHeader";
+import NavHeader from "./Header/NavHeader";
 import SideBar from "./SideBar";
 function Common(props) {
   const [sideBarOn, setSideBarOn] = useState(false);
@@ -28,10 +27,6 @@ function Common(props) {
           {props.val()}
         </div>
       </div>
-      <div>
-      <Footer/>
-      </div>
-      
     </>
   );
 }

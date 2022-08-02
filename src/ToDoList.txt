@@ -10,11 +10,11 @@ Rating
 // Search story
 sort by
 // story update, delete
-Download as
+// Download as
 // Only 200 characters in first page for a story
 // change date and time formatting
-usecontext
-HttpOnly
+// usecontext
+// HttpOnly
 React Portal
 /*
 feature/ABC-123-Create-Component

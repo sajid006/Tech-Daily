@@ -1,13 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Common from "../../Home/Common";
-import SearchStory from "./SearchStory";
+import Common from "../Common";
+import SearchStory from "./SearchStoryForm";
 import Stories from "./Stories";
 
 function SearchedStories() {
   const {id} = useParams();
-  const [api,setApi] = useState("");
+  const [api,setApi] = useState(`http://localhost:3000/api/v1/articles/search/${id}`);
   useEffect(() => {
     setApi(`http://localhost:3000/api/v1/articles/search/${id}`);
   },[id]);

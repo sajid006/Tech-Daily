@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logout from "../components/Auth/Logout";
-import Header from "../components/Layout/Header";
-import { useAuth } from "../Contexts/AuthContext";
+import { useAuth } from "../../Contexts/AuthContext";
+import Logout from "../Auth/Logout";
+import Header from "../Header/Header";
 const LoggedInHome = () => {
   const [logoutIsShown, setLogoutIsShown] = useState(false);
   const { currentUser} = useAuth();

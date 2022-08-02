@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
 import PaginatedItems from "../Pagination/Pagination";
 import classes from "./Stories.module.css";
-import StoryItem from "./StoryItem/StoryItem";
+import StoryItem from "./StoryItem";
 const axios = require("axios").default;
-
 const Stories = (props) => {
   const [articles, setArticles] = useState([]);
+  const [sorted, setSorted] = useState(false);
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get(props.link);
-        res.data.reverse();
+        if (!sorted) res.data.reverse();
         setArticles(res.data);
       } catch (err) {
         console.log(err);
       }
     }
     fetchData();
-  }, [props.link]);
-
+  }, [props.link, sorted]);
   const StoriesList = articles.map((Story) => (
     <StoryItem
       key={Story.id}
@@ -32,9 +32,23 @@ const Stories = (props) => {
   ));
 
   return (
-    <div className={classes.Stories}>
-      <PaginatedItems items={StoriesList}></PaginatedItems>
-    </div>
+    <>
+      <div className={classes.dropdown}>
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            Sort By
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item active={!sorted} onClick={()=>setSorted(false)}>New to Old</Dropdown.Item>
+            <Dropdown.Item active={sorted} onClick={()=>setSorted(true)}>Old to New</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+      <div className={classes.Stories}>
+        <PaginatedItems items={StoriesList}></PaginatedItems>
+      </div>
+    </>
   );
 };
 

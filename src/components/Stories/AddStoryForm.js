@@ -13,9 +13,6 @@ const AddStoryForm = () => {
   const [errMessage, setErrMessage] = useState("");
   const { currentUser } = useAuth();
   const navigate = useNavigate();
-
-  
-
   const enteredTitleIsValid = enteredTitle.trim() !== "";
   const enteredDescriptionIsValid = enteredDescription.trim() !=="";
   const titleInputIsInvalid =
@@ -41,7 +38,6 @@ const titleInputBlurHandler = (event) => {
   setEnteredTitleTouched(true);
 };
 
-// const navigate = useNavigate('/produce');
 const descriptionInputBlurHandler = (event) => {
   setEnteredDescriptionTouched(true);
 };
@@ -78,16 +74,6 @@ const descriptionInputBlurHandler = (event) => {
 
   };
 
-  // usernameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
-
-//   const titleInputClasses = titleInputIsInvalid
-//   ? "form-control invalid"
-//   : "form-control";
-
-// const descriptionInputClasses = descriptionInputIsInvalid
-//   ? "form-control invalid"
-//   : "form-control";
-
     return (
    
         
@@ -120,7 +106,7 @@ const descriptionInputBlurHandler = (event) => {
             <p className="error-text">Description must not be empty.</p>
           )}
         </div>
-        <div>
+        <div style={{textAlign: "center"}}>
         <button disabled={!formIsValid}>Submit</button>
         </div>
       </form>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Common from "../../Home/Common";
+import Common from "../Common";
 import Card from "../UI/Card";
 import OneStory from "./OneStoryItem";
 import classes from './Stories.module.css';

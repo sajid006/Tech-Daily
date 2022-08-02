@@ -3,8 +3,6 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Contexts/AuthContext";
 import Modal from "../../UI/Modal";
-const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
 const Signup = (props) => {
   const {signup} = useAuth();
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -112,14 +110,6 @@ const Signup = (props) => {
     console.log(enteredName);
     console.log(enteredEmail);
     console.log(enteredPassword);
-
-    // usernameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
-    // setEnteredUsername("");
-    // setEnteredUsernameTouched(false);
-    // setEnteredName("");
-    // setEnteredNameTouched(false);
-    // setEnteredEmail("");
-    // setEnteredEmailTouched(false);
     setEnteredPassword("");
     setEnteredPasswordTouched(false);
   };

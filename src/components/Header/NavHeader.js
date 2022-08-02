@@ -1,17 +1,11 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../../Contexts/AuthContext";
-import LoggedInHome from "../../Home/LoggedInHome";
-import LoggedOutHome from "../../Home/LoggedOutHome";
+import LoggedInHome from "../Home/LoggedInHome";
+import LoggedOutHome from "../Home/LoggedOutHome";
 const axios = require("axios").default;
 const api = "http://localhost:3000/api/v1/";
 const NavHeader = (props) => {
   const {verify, currentUser} = useAuth();
-  // const setLoggedIn = (value) => {
-  //   isLoggedIn(value);
-  // };
-  // const resetLoggedIn = () => {
-  //   isLoggedIn("");
-  // };
   useEffect(() => {
     verify();
   }, [currentUser]);

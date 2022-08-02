@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
-import Common from "../../Home/Common";
+import Common from "../Common";
 import PaginatedItems from "../Pagination/Pagination";
 import classes from './AllProfiles.module.css';
 import UserItem from './UserItem';

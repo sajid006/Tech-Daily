@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 
-import Modal from "../UI/Modal";
 const axios = require("axios").default;
 const apiUrl = "http://localhost:3000/api/v1/";
 const DeleteStoryForm = (props) => {
@@ -16,7 +15,6 @@ const DeleteStoryForm = (props) => {
           apiUrl + `articles/${props.id}`,
            { withCredentials: true }
         );
-        props.onClose();
         navigate("/");
       } catch (err) {
         console.log(err.response.data);
@@ -25,12 +23,14 @@ const DeleteStoryForm = (props) => {
     }
     await deleteData();
   }
-  return <Modal onClose={props.onClose}>
+  return <div>
     <h3>Are you sure you want to delete this story?</h3>
     {errMessage && <div className="error-text">{errMessage}</div>}
-    <Button variant="light" onClick={props.onClose}>No</Button>{' '}
+    <Button variant="light" onClick={props.handleClose}>No</Button>{' '}
     <Button variant="danger" onClick={deleteUserHandler}>Delete</Button>
-  </Modal>;
+  </div>;
+
+
 };
 
 export default DeleteStoryForm;

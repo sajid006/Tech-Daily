@@ -102,7 +102,7 @@ const descriptionInputBlurHandler = (event) => {
         {errMessage && (
             <p className="error-text">{errMessage}</p>
           )}
-        <div>
+        <div style={{textAlign: "center"}}>
         <button disabled={!formIsValid}>Submit</button>
         </div>
       </form>

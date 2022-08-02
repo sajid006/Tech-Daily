@@ -1,5 +1,5 @@
 import React from "react";
-import DateFormating from "../../DateFormatting";
+import DateFormating from "../../utils/DateFormatting";
 import Card from "../UI/Card";
 import classes from "./UserItem.module.css";
 const StoryItem = (props) => {

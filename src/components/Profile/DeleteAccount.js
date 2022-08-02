@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext";
 import Modal from "../UI/Modal";
 const axios = require("axios").default;
 const apiUrl = "http://localhost:3000/api/v1/";
+
 const DeleteAccount = (props) => {
   const navigate = useNavigate();
 
   const [errMessage, setErrMessage] = useState("");
+  const { logout }  = useAuth();
   const deleteUserHandler = async () => {
     async function deleteData() {
       try {
         await axios.delete(apiUrl + `users/${props.username}`, {
           withCredentials: true,
         });
+        await logout();
         props.onClose();
         navigate("/");
       } catch (err) {
