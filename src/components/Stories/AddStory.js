@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
 import Common from "../Common";
 import AddStoryForm from "./AddStoryForm";
-const axios = require("axios").default;
 function AddStory() {
     const navigate = useNavigate();
     const { currentUser } = useAuth();

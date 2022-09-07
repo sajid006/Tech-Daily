@@ -2,13 +2,13 @@ import React from "react";
 import Robot from "../../assets/Robot.jpg";
 import Common from "../Common";
 import Card from "../UI/Card";
-
+import classes from './Views.module.css';
 const AboutUs = () => {
   const AboutMessage = () => {
     return (
-      <div style={{ textAlign: "center", marginTop: "10rem", width: "90%", marginLeft: "5%"}}>
+      <div className={classes.aboutus}>
         <Card>
-        <img src={Robot} alt="Sajid" style={{width: "15rem", height: "15rem", borderRadius: "50%"}}/>
+        <img src={Robot} alt="Sajid" className={classes.aboutimg}/>
         <h1>Owner: Sajid Hasan</h1>
         <h2>Email: sajid.hasan@cefalo.com</h2>
         <h2>Contact: 01521462376</h2>

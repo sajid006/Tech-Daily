@@ -6,18 +6,14 @@ import {
   CDBSidebarMenuItem
 } from "cdbreact";
 import React from "react";
+import classes from './SideBar.module.css';
 
 const SideBar = () => {
   return (
     <div>
-      <CDBSidebar
-        style={{
-          backgroundColor: "black",
-          overflowX: "hidden",
-        }}
-      >
+      <CDBSidebar className={classes.sidebar}>
         <CDBSidebarContent>
-          <CDBSidebarMenu style={{position: "fixed"}}>
+          <CDBSidebarMenu className={classes.sidebarmenu}>
             <CDBSidebarMenuItem icon="fa fa-edit">
               <a href="/stories/new">Add a Story</a>
             </CDBSidebarMenuItem>

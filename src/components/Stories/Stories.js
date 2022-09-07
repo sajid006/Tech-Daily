@@ -35,7 +35,7 @@ const Stories = (props) => {
     <>
       <div className={classes.dropdown}>
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown.Toggle variant="light" id="dropdown-basic">
             Sort By
           </Dropdown.Toggle>
 

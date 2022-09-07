@@ -8,6 +8,7 @@ import Common from "../Common";
 import Stories from "../Stories/Stories";
 import Card from "../UI/Card";
 import DeleteAccount from "./DeleteAccount";
+import classes from './Profile.module.css';
 import UpdateProfile from "./UpdateProfile";
 const axios = require("axios").default;
 const Profile = () => {
@@ -75,12 +76,12 @@ const Profile = () => {
             )}
           </Card>
           <Card>
-            <div style={{ width: "100%", height: "2rem", color: "blue" }}>
+            <div className={classes.allstories}>
               <h4>&nbsp;&nbsp;All stories of {user.name}</h4>
             </div>
           </Card>
         </div>
-        <div style={{ marginTop: "-5rem" }}>
+        <div className={classes.stories}>
           <Stories link={api} />
         </div>
       </>

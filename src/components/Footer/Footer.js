@@ -1,51 +1,49 @@
 import React from "react";
 import {
-    Box, Column, Container, FooterLink, Row
+	Box, Column, Container, FooterItem, FooterLink, FooterTitle, Row
 } from "./FooterStyles";
 
 const Footer = () => {
 return (
 	<Box>
-	<h3 style={{ color: "white",
-				textAlign: "center",
-				marginTop: "-50px" }}>
+	<FooterTitle>
 		Tech Daily: A Computer Science Portal for Tech Enthusiasts
-	</h3>
+	</FooterTitle>
 	<Container>
 		<Row>
 		<Column>
         <FooterLink href="http://facebook.com">
 			<i className="fab fa-facebook-f">
-				<span style={{ marginLeft: "10px" }}>
+				<FooterItem>
 				Facebook
-				</span>
+				</FooterItem>
 			</i>
 			</FooterLink>
 		</Column>
 		<Column>
         <FooterLink href="http://instagram.com">
 			<i className="fab fa-instagram">
-				<span style={{ marginLeft: "10px" }}>
+				<FooterItem>
 				Instagram
-				</span>
+				</FooterItem>
 			</i>
 			</FooterLink>
 		</Column>
 		<Column>
         <FooterLink href="http://twitter.com">
 			<i className="fab fa-twitter">
-				<span style={{ marginLeft: "10px" }}>
+				<FooterItem>
 				Twitter
-				</span>
+				</FooterItem>
 			</i>
 			</FooterLink>
 		</Column>
 		<Column>
 			<FooterLink href="http://youtube.com">
 			<i className="fab fa-youtube">
-				<span style={{ marginLeft: "10px" }}>
+				<FooterItem>
 				Youtube
-				</span>
+				</FooterItem>
 			</i>
 			</FooterLink>
 		</Column>

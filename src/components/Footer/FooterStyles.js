@@ -43,6 +43,14 @@ grid-gap: 20px;
 }
 `;
 
+export const FooterTitle = styled.h3`
+color: white;
+text-align: center;
+margin-top:-50px`
+
+export const FooterItem = styled.span`
+margin-left: 10px`
+
 export const FooterLink = styled.a`
 color: #fff;
 margin-bottom: 20px;

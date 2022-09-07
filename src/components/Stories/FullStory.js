@@ -44,7 +44,7 @@ const FullStory = () => {
     const showFullStory = () => {
         return (<div className={classes.Stories}>
           {!errMessage && <section className={classes.Stories}>{Story}</section>}
-          {errMessage && <section style={{align:"center"}} className={classes.Stories}><Card>Story Not Found</Card></section>}
+          {errMessage && <section className={classes.Stories}><Card>Story Not Found</Card></section>}
           </div>);
     }
   return (

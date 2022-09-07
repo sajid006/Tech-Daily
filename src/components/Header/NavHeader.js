@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useAuth } from "../../Contexts/AuthContext";
 import LoggedInHome from "../Home/LoggedInHome";
 import LoggedOutHome from "../Home/LoggedOutHome";
-const axios = require("axios").default;
-const api = "http://localhost:3000/api/v1/";
+import classes from './NavHeader.module.css';
 const NavHeader = (props) => {
   const {verify, currentUser} = useAuth();
   useEffect(() => {
@@ -11,7 +10,7 @@ const NavHeader = (props) => {
   }, [currentUser]);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className={classes.navheader}>
       <div>
         <button onClick={props.toggleSideBar} className="navbutton">
           <i className="fa fa-fw fa-bars"></i>

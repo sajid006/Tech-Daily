@@ -8,14 +8,16 @@ Rating
 // About us
 // Token stored in cookie
 // Search story
-sort by
+//sort by
 // story update, delete
 // Download as
 // Only 200 characters in first page for a story
 // change date and time formatting
 // usecontext
 // HttpOnly
-React Portal
+//React Portal
 /*
 feature/ABC-123-Create-Component
 create views folder while restructuring
+make css for mobile screen
+Read me file

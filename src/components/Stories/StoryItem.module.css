@@ -21,3 +21,11 @@ div {
 div:after {
   display: inline-block;
 }
+
+.button {
+  font-size: 12px;
+}
+
+.sidediv {
+  display: flex;
+}

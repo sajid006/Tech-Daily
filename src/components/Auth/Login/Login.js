@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Contexts/AuthContext";
 import Modal from "../../UI/Modal";
-import classes from './Login.module.css';
+
 
 const Login = (props) => {
   const { login } = useAuth();
@@ -78,8 +78,8 @@ const Login = (props) => {
     setEnteredPasswordTouched(false);
   };
 
-  const usernameInputClasses = usernameInputIsInvalid ? classes['form-control invalid'] : classes['form-control'];
-  const passwordInputClasses = passwordInputIsInvalid ? classes['form-control invalid'] : classes['form-control'];
+  const usernameInputClasses = usernameInputIsInvalid ? 'form-control invalid' : 'form-control';
+  const passwordInputClasses = passwordInputIsInvalid ? 'form-control invalid' : 'form-control';
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={FormSubmissionHandler}>

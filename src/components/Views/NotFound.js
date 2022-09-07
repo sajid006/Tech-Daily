@@ -1,10 +1,10 @@
 import React from "react";
 import Common from "../Common";
 import Card from "../UI/Card";
-
+import classes from './Views.module.css';
 const NotFound = () => {
     const NotFoundMessage = () => {
-        return (<div style={{ textAlign: "center", height: "10rem", marginTop: "10rem" }}>
+        return (<div className={classes.notfound}>
         <Card>
           <h1>404</h1>
           <h2>The requested URL was not found on this server.</h2>

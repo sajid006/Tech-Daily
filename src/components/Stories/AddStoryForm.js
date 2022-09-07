@@ -106,7 +106,7 @@ const descriptionInputBlurHandler = (event) => {
             <p className="error-text">Description must not be empty.</p>
           )}
         </div>
-        <div style={{textAlign: "center"}}>
+        <div className={classes.buttonclass}>
         <button disabled={!formIsValid}>Submit</button>
         </div>
       </form>

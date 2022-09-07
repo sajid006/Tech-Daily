@@ -1,7 +1,16 @@
+.common {
+  display: flex;
+}
+
 .sidebar {
-  margin-top: "5rem";
-  height: "50%";
-  top: "5rem";
-  position: "sticky";
-  background-color: "black";
+  margin-top: 5rem;
+  top: 5rem;
+  position: sticky;
+  background-color: black;
+  height: 50rem;
+}
+
+.component {
+  width: 100%;
+  margin-block-end: 10rem;
 }

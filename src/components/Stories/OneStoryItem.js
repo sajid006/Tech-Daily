@@ -46,7 +46,7 @@ const OneStory = (props) => {
   let editText;
   if (editable) {
     editText = (
-      <div style={{ display: "flex" }}>
+      <div className={classes.sidediv}>
         &nbsp;&nbsp;<button onClick={showEditStory}>Edit Story</button>
         &nbsp;&nbsp;
         <button onClick={() => setIsOpen(true)}>Delete Story</button>

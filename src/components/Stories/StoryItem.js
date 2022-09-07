@@ -18,14 +18,12 @@ const StoryItem = (props) => {
     <Card>
       <li className={classes.Story}>
         <div>
-
-        
           <h3>{props.name}</h3>
           <h4>Author: <a href={userProfile}>{props.username}</a></h4>
           <div className={classes.description}>{description}</div>
           <h6>Posted At: {createdAt}</h6>
           <h6>Updated At: {updatedAt}</h6>
-          <button style={{fontSize: "12px"}} onClick={() => navigate(`/stories/${props.id}`)}>See More</button>
+          <button className={classes.button} onClick={() => navigate(`/stories/${props.id}`)}>See More</button>
           </div>
       </li>
     </Card>

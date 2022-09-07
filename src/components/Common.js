@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
+import classes from './Common.module.css';
 import NavHeader from "./Header/NavHeader";
 import SideBar from "./SideBar";
 function Common(props) {
@@ -11,19 +12,14 @@ function Common(props) {
     <>
       <NavHeader toggleSideBar={toggleSideBar} />
 
-      <div style={{display: "flex" }}>
+      <div className={classes.common}>
         {sideBarOn && (
-          <div style={{
-            marginTop: "5rem",
-            top: "5rem",
-            position: "sticky",
-            backgroundColor: "black"
-          }}>
+          <div className={classes.sidebar}>
             <SideBar />
           </div>
         )}
 
-        <div style={{width:"100%", marginBlockEnd:"10rem"}}>
+        <div className={classes.component}>
           {props.val()}
         </div>
       </div>
