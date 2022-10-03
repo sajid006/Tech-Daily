@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import Cookies from 'universal-cookie';
+import apiUrl from "../../utils/ApiUrl";
 import Modal from "../UI/Modal";
 const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
 
-const UpdateProfile = (props) => {
+
+const UpdateUser = (props) => {
+  const cookies = new Cookies();
+  const userToken = cookies.get('user');
   const [enteredName, setEnteredName] = useState(props.name);
   const [enteredEmail, setEnteredEmail] = useState(props.email);
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -15,17 +19,16 @@ const UpdateProfile = (props) => {
   const [updateMessage, setUpdateMessage] = useState(false);
   const enteredNameIsValid = enteredName.trim() !== "";
   const enteredEmailIsValid = enteredEmail.trim() !== "";
-  const enteredPasswordIsValid = enteredPassword.trim() !== "";
+  const enteredPasswordIsValid = true;
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
   const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
-  const passwordInputIsInvalid =
-    !enteredPasswordIsValid && enteredPasswordTouched;
+  const passwordInputIsInvalid = false;
 
 
 
   let formIsValid = false;
 
-  if (enteredPasswordIsValid && enteredEmailIsValid && enteredNameIsValid) {
+  if (enteredEmailIsValid && enteredNameIsValid) {
     formIsValid = true;
   }
 
@@ -75,7 +78,11 @@ const UpdateProfile = (props) => {
               email: enteredEmail,
               password: enteredPassword,
             },
-            { withCredentials: true }
+            {
+              headers: {
+                Authorization: `Bearer ${userToken}`
+            }
+          }
           );
           setUpdateMessage(res.data);
           console.log(res.data);
@@ -108,7 +115,7 @@ const UpdateProfile = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={FormSubmissionHandler}>
-        <h3>Update Profile of {props.username}</h3>
+        <h3>Update Details of {props.username}</h3>
         <div className={nameInputClasses}>
           <label htmlFor="name">Name</label>
           <input
@@ -164,4 +171,4 @@ const UpdateProfile = (props) => {
   );
 };
 
-export default UpdateProfile;
+export default UpdateUser;

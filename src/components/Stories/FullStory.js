@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import apiUrl from "../../utils/ApiUrl";
 import Common from "../Common";
 import Card from "../UI/Card";
 import OneStory from "./OneStoryItem";
@@ -16,7 +17,7 @@ const FullStory = () => {
     async function fetchData() {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/v1/articles/${id}`
+          apiUrl + `stories/${id}`
         );
         setArticle(res.data);
       } catch (err) {
@@ -35,7 +36,7 @@ const FullStory = () => {
       id={article.id}
       title={article.title}
       description={article.description}
-      username={article.username}
+      authorname={article.authorName}
       createdAt={article.createdAt}
       updatedAt={article.updatedAt}
       toggleSetUpdated={toggleSetUpdated}

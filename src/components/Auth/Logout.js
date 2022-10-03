@@ -3,8 +3,6 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
 import Modal from "../UI/Modal";
-const axios = require("axios").default;
-const api= "http://localhost:3000/api/v1/"
 const Logout = (props) => {
   const {logout} = useAuth();
   let navigate = useNavigate();

@@ -15,15 +15,15 @@ const LoggedInHome = () => {
     setLogoutIsShown(false);
   };
 
-  const navigateToProfile = () => {
-    navigate(`/profiles/${currentUser}`);
+  const navigateToUser = () => {
+    navigate(`/users/${currentUser}`);
   };
   return (
     <>
       {logoutIsShown && <Logout onClose={hideLogoutHandler}/>}
       <Header
         onShowLogout={showLogoutHandler}
-        onClickProfile={navigateToProfile}
+        onClickUser={navigateToUser}
       />
     </>
   );

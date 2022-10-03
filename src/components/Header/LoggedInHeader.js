@@ -7,7 +7,7 @@ const LoggedInHeader = (props) => {
   return (
     <Row>
     <Col md>
-      <HeaderButton onClick={props.onClickProfile} value={ currentUser } />
+      <HeaderButton onClick={props.onClickUser} value={ currentUser } />
     </Col>
     <Col md>
       <HeaderButton onClick={props.onShowLogout} value={"Log Out"} />

@@ -63,8 +63,9 @@ const Login = (props) => {
           props.onClose();
           navigate('/');
         } catch (err) {
-          console.log(err.response.data);
-          setErrMessage(err.response.data.message);
+          console.log(err.response.data.Message);
+          setErrMessage(err.response.data.Message);
+          //alert(err.response.data.Message);
         }
       }
       fetchData();

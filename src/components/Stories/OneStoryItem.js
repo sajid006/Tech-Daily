@@ -16,19 +16,19 @@ const OneStory = (props) => {
   const { verify, currentUser } = useAuth();
   let data;
   useEffect(() => {
-    console.log(props.username);
+    console.log(props.authorname);
     verify();
-    if (currentUser === props.username) {
+    if (currentUser === props.authorname) {
       setEditable(true);
     } else setEditable(false);
     data = [{
       title: props.title,
-      username: props.username,
+      authorname: props.authorname,
       description: props.description,
       createdAt: createdAt,
       updatedAt: updatedAt,
     }]
-  }, [props.username, currentUser]);
+  }, [props.authorname, currentUser]);
 
   const showEditStory = () => {
     setEditForm(true);
@@ -55,7 +55,7 @@ const OneStory = (props) => {
   } else {
     editText = <p></p>
   }
-  const userProfile = "/profiles/" + props.username;
+  const userDetails = "/users/" + props.authorname;
   const createdAt = DateFormating(props.createdAt);
   const updatedAt = DateFormating(props.updatedAt);
 
@@ -79,7 +79,7 @@ const OneStory = (props) => {
           <div className={classes.div}>
             <h3>{props.title}</h3>
             <h4>
-              Author: <a href={userProfile}>{props.username}</a>
+              Author: <a href={userDetails}>{props.authorname}</a>
             </h4>
             <div className={classes.description}>{props.description}</div>
             <h6>Posted At: {createdAt}</h6>

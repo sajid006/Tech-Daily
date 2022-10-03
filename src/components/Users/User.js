@@ -3,28 +3,29 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
+import apiUrl from "../../utils/ApiUrl";
 import DateFormating from "../../utils/DateFormatting";
 import Common from "../Common";
 import Stories from "../Stories/Stories";
 import Card from "../UI/Card";
 import DeleteAccount from "./DeleteAccount";
-import classes from './Profile.module.css';
-import UpdateProfile from "./UpdateProfile";
+import UpdateUser from "./UpdateUser";
+import classes from './User.module.css';
 const axios = require("axios").default;
-const Profile = () => {
+const User = () => {
   const [user, setUser] = useState("");
   const [update, setUpdate] = useState("");
   const [deleteBar, setDeleteBar] = useState("");
   const [editable, setEditable] = useState(false);
   const {id} = useParams();
-  const [api, setApi] = useState(`http://localhost:3000/api/v1/users/${id}/articles`);
+  const [api, setApi] = useState(apiUrl + `stories/users/${id}`);
   const { currentUser, verify } = useAuth();
 
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/v1/users/${id}`
+          apiUrl + `users/${id}`
         );
         setUser(res.data);
         console.log(user);
@@ -32,7 +33,7 @@ const Profile = () => {
         console.log(err);
       }
     }
-    setApi(`http://localhost:3000/api/v1/users/${id}/articles`);
+    setApi(apiUrl + `stories/users/${id}`);
     fetchData();
     verify();
     console.log(id);
@@ -52,10 +53,10 @@ const Profile = () => {
     setDeleteBar(false);
   };
 
-  const showProfile = () => {
+  const showUser = () => {
     return (
       <>
-        <div className="profile">
+        <div className="user">
           <Card>
             <div>
               <h3>Username: {user.username}</h3>
@@ -67,7 +68,7 @@ const Profile = () => {
             {editable && (
               <div>
                 <Button variant="primary" size="lg" onClick={showUpdateHandler}>
-                  Update Profile
+                  Update User
                 </Button>{" "}
                 <Button variant="danger" size="lg" onClick={showDeleteHandler}>
                   Delete Account
@@ -90,7 +91,7 @@ const Profile = () => {
   return (
     <>
       {update && (
-        <UpdateProfile
+        <UpdateUser
           onClose={hideUpdateHandler}
           username={currentUser}
           email={user.email}
@@ -100,9 +101,9 @@ const Profile = () => {
       {deleteBar && (
         <DeleteAccount onClose={hideDeleteHandler} username={currentUser} />
       )}
-      <Common val={showProfile} />
+      <Common val={showUser} />
     </>
   );
 };
 
-export default Profile;
+export default User;

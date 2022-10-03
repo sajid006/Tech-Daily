@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
 import { useAuth } from "../../Contexts/AuthContext";
+import apiUrl from "../../utils/ApiUrl";
 import classes from './AddStoryForm.module.css';
-
 const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
+
 const AddStoryForm = () => {
+  const cookies = new Cookies();
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
   const [enteredTitleTouched, setEnteredTitleTouched] = useState(false);
@@ -51,15 +53,19 @@ const descriptionInputBlurHandler = (event) => {
       } else {
         async function postData() {
             try {
-              
-              const username = currentUser;
+              const userToken = cookies.get('user');
+              const authorname = currentUser;
               const res = await axios.post(
-                apiUrl + "articles",
+                apiUrl + "stories",
                 {
-                  username: username,
+                  authorname: authorname,
                   title: enteredTitle,
                   description: enteredDescription,
-                }, { withCredentials: true }
+                },{
+                  headers: {
+                    Authorization: `Bearer ${userToken}`
+                }
+              }
               );
               const ID = res.data.id;
               console.log(ID);

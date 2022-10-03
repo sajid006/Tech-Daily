@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
-
+import Cookies from 'universal-cookie';
+import apiUrl from "../../utils/ApiUrl";
 const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
 const DeleteStoryForm = (props) => {
   const navigate = useNavigate();
-
+  const cookies = new Cookies();
+  const userToken = cookies.get('user');
   const [errMessage, setErrMessage] = useState("");
   const deleteUserHandler = async() => {
     async function deleteData() {
       try {
         await axios.delete(
-          apiUrl + `articles/${props.id}`,
-           { withCredentials: true }
+          apiUrl + `stories/${props.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`
+          }
+        }
         );
         navigate("/");
       } catch (err) {

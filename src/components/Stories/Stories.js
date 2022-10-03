@@ -12,6 +12,7 @@ const Stories = (props) => {
       try {
         const res = await axios.get(props.link);
         if (!sorted) res.data.reverse();
+        console.log(res.data);
         setArticles(res.data);
       } catch (err) {
         console.log(err);
@@ -20,12 +21,13 @@ const Stories = (props) => {
     fetchData();
   }, [props.link, sorted]);
   const StoriesList = articles.map((Story) => (
+    
     <StoryItem
       key={Story.id}
       id={Story.id}
       name={Story.title}
       description={Story.description}
-      username={Story.username}
+      authorname={Story.authorName}
       createdAt={Story.createdAt}
       updatedAt={Story.updatedAt}
     />

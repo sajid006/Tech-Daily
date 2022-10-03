@@ -18,7 +18,7 @@ const SideBar = () => {
               <a href="/stories/new">Add a Story</a>
             </CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="fa fa-user">
-            <a href="/profiles">Author Directory</a>
+            <a href="/users">Author Directory</a>
             </CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="credit-card" iconType="solid">
             <a href="/about">About Us</a>

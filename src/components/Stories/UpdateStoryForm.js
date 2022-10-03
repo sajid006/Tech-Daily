@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Cookies from 'universal-cookie';
+import apiUrl from "../../utils/ApiUrl";
 import Modal from "../UI/Modal";
 import classes from './AddStoryForm.module.css';
 const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
 const UpdateStoryForm = (props) => {
+  const cookies = new Cookies();
+  const userToken = cookies.get('user');
   const [enteredTitle, setEnteredTitle] = useState(props.title);
   const [enteredDescription, setEnteredDescription] = useState(props.description);
   const [enteredTitleTouched, setEnteredTitleTouched] = useState(true);
@@ -53,11 +55,15 @@ const descriptionInputBlurHandler = (event) => {
             try {
               
               const res = await axios.patch(
-                apiUrl + `articles/${props.id}`,
+                apiUrl + `stories/${props.id}`,
                 {
                   title: enteredTitle,
                   description: enteredDescription,
-                }, { withCredentials: true }
+                }, {
+                  headers: {
+                    Authorization: `Bearer ${userToken}`
+                }
+              }
               );
               props.onClose();
               props.toggleSetUpdated();
