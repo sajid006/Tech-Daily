@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import apiUrl from '../../utils/ApiUrl';
 import Common from "../Common";
-import PaginatedItems from "../Pagination/Pagination";
 import classes from './AllUsers.module.css';
 import UserItem from './UserItem';
 const axios = require("axios").default;
@@ -36,7 +35,8 @@ const AllUsers = () => {
     />
   ));
   const showUsersList = () => {
-    return (<div className={classes.AllUsers}><PaginatedItems items={UsersList}></PaginatedItems></div>)
+    //return (<div className={classes.AllUsers}><PaginatedItems items={UsersList}></PaginatedItems></div>)
+    return (<div className={classes.AllUsers}>{UsersList}</div>)
   }
    
   return (

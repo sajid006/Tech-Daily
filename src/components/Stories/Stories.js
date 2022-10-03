@@ -7,19 +7,29 @@ const axios = require("axios").default;
 const Stories = (props) => {
   const [articles, setArticles] = useState([]);
   const [sorted, setSorted] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(props.link);
-        if (!sorted) res.data.reverse();
-        console.log(res.data);
-        setArticles(res.data);
+        //setPageNumber(1);
+        console.log(pageNumber);
+        const res = await axios.get(props.link+"?pageNumber="+pageNumber+"&pageSize=3");
+        setPageCount(res.data.totalPages);
+        console.log(res.data.data);
+        //if (!sorted) res.data.data.reverse();
+        setArticles(res.data.data);
       } catch (err) {
         console.log(err);
       }
     }
     fetchData();
-  }, [props.link, sorted]);
+  }, [pageNumber, sorted, props.link]);
+  const changePageNumber = (number) => {
+    console.log(number);
+    setPageNumber(number);
+    console.log(pageNumber);
+  }
   const StoriesList = articles.map((Story) => (
     
     <StoryItem
@@ -48,7 +58,7 @@ const Stories = (props) => {
         </Dropdown>
       </div>
       <div className={classes.Stories}>
-        <PaginatedItems items={StoriesList}></PaginatedItems>
+        <PaginatedItems items={StoriesList} pageNumber={pageNumber} pageCount={pageCount} changePageNumber={changePageNumber}></PaginatedItems>
       </div>
     </>
   );

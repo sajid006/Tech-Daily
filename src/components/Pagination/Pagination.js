@@ -2,21 +2,19 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import classes from "./Pagination.module.css";
 
-const PaginatedItems = ({ items = [], children }) => {
-  const itemsPerPage = 3;
-  const [currentItems, setCurrentItems] = useState([]);
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
+const PaginatedItems = (props) => {
+  const [currentItems, setCurrentItems] = useState(props.items);
+  const [pageCount, setPageCount] = useState(props.pageCount);
+  const [itemOffset, setItemOffset] = useState(props.pageNumber);
   useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(items.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, items]);
+    setCurrentItems(props.items);
+    setPageCount(props.pageCount);
+    setItemOffset(props.pageNumber);
+  }, [props]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
-
-    setItemOffset(newOffset);
+    console.log(event.selected+1);
+    props.changePageNumber(event.selected+1);
   };
 
   return (
