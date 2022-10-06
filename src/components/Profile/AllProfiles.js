@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
+import apiUrl from "../../utils/ApiUrl";
 import Common from "../Common";
 import PaginatedItems from "../Pagination/Pagination";
 import classes from './AllProfiles.module.css';
@@ -11,7 +12,7 @@ const AllProfiles = () => {
     async function fetchData() {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/v1/users`
+          apiUrl+'users'
         );
         setUsers(res.data);
         console.log(users);

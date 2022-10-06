@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
-
+import apiUrl from "../../utils/ApiUrl";
 const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
+
 const DeleteStoryForm = (props) => {
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ const DeleteStoryForm = (props) => {
     async function deleteData() {
       try {
         await axios.delete(
-          apiUrl + `articles/${props.id}`,
+          apiUrl + `stories/${props.id}`,
            { withCredentials: true }
         );
         navigate("/");

@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import apiUrl from "../utils/ApiUrl";
 const axios = require("axios").default;
 const AuthContext = React.createContext();
-const api = "http://localhost:3000/api/v1/";
+
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -18,7 +19,7 @@ export function AuthContextProvider({ children }) {
       try {
         const data = {};
         const userDetails = await axios.post(
-          `${api}users/verifyToken`,
+          `${apiUrl}users/verifyToken`,
           data,
           config
         );
@@ -35,14 +36,14 @@ export function AuthContextProvider({ children }) {
     verifyToken();
   });
   const signup = async (userDetails) => {
-    const response = await axios.post(`${api}users`, userDetails, config);
+    const response = await axios.post(`${apiUrl}users`, userDetails, config);
     if (response.data) {
       setCurrentUser(response.data.username);
     }
     return response;
   };
   const login = async (userDetails) => {
-    const response = await axios.post(`${api}users/login`, userDetails, config);
+    const response = await axios.post(`${apiUrl}users/login`, userDetails, config);
     if (response.data) {
       console.log(response.data);
       setCurrentUser(response.data.username);
@@ -50,13 +51,13 @@ export function AuthContextProvider({ children }) {
     return response;
   };
   const logout = async () => {
-    await axios.get(`${api}users/logout`, config);
+    await axios.get(`${apiUrl}users/logout`, config);
     setCurrentUser(null);
   };
   const verify = async () => {
     const data = {};
     const userDetails = await axios.post(
-      `${api}users/verifyToken`,
+      `${apiUrl}users/verifyToken`,
       data,
       config
     );

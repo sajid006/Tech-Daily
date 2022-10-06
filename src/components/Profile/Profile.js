@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
+import apiUrl from "../../utils/ApiUrl";
 import DateFormating from "../../utils/DateFormatting";
 import Common from "../Common";
 import Stories from "../Stories/Stories";
@@ -17,14 +18,14 @@ const Profile = () => {
   const [deleteBar, setDeleteBar] = useState("");
   const [editable, setEditable] = useState(false);
   const {id} = useParams();
-  const [api, setApi] = useState(`http://localhost:3000/api/v1/users/${id}/articles`);
+  const [api, setApi] = useState(`${apiUrl}${id}/stories`);
   const { currentUser, verify } = useAuth();
 
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/v1/users/${id}`
+          `${apiUrl}users/${id}`
         );
         setUser(res.data);
         console.log(user);
@@ -32,7 +33,7 @@ const Profile = () => {
         console.log(err);
       }
     }
-    setApi(`http://localhost:3000/api/v1/users/${id}/articles`);
+    setApi(`${apiUrl}users/${id}/stories`);
     fetchData();
     verify();
     console.log(id);

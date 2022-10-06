@@ -1,8 +1,9 @@
+import apiUrl from "./ApiUrl";
 const axios = require("axios").default;
-const api = "http://localhost:3000/api/v1/";
+
 
 export async function downloadFile(id, filename, mime) {
-  const data = await axios.get(`${api}articles/${id}`, {
+  const data = await axios.get(`${apiUrl}stories/${id}`, {
     headers: {
       Accept: mime,
     },

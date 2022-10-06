@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
+import apiUrl from "../../utils/ApiUrl";
 import classes from './AddStoryForm.module.css';
-
 const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
+
 const AddStoryForm = () => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
@@ -54,7 +54,7 @@ const descriptionInputBlurHandler = (event) => {
               
               const username = currentUser;
               const res = await axios.post(
-                apiUrl + "articles",
+                apiUrl + "stories",
                 {
                   username: username,
                   title: enteredTitle,

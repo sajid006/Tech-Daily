@@ -5,21 +5,21 @@ import classes from "./Stories.module.css";
 import StoryItem from "./StoryItem";
 const axios = require("axios").default;
 const Stories = (props) => {
-  const [articles, setArticles] = useState([]);
+  const [stories, setStories] = useState([]);
   const [sorted, setSorted] = useState(false);
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get(props.link);
         if (!sorted) res.data.reverse();
-        setArticles(res.data);
+        setStories(res.data);
       } catch (err) {
         console.log(err);
       }
     }
     fetchData();
   }, [props.link, sorted]);
-  const StoriesList = articles.map((Story) => (
+  const StoriesList = stories.map((Story) => (
     <StoryItem
       key={Story.id}
       id={Story.id}

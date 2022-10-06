@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
+import apiUrl from "../../utils/ApiUrl";
 import Modal from "../UI/Modal";
 const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
+
 
 const DeleteAccount = (props) => {
   const navigate = useNavigate();

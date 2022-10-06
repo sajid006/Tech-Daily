@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import apiUrl from "../../utils/ApiUrl";
 import Common from "../Common";
 import Card from "../UI/Card";
 import OneStory from "./OneStoryItem";
@@ -8,7 +9,7 @@ const axios = require("axios").default;
 
 
 const FullStory = () => {
-  const [article, setArticle] = useState(Object);
+  const [story, setStory] = useState(Object);
   const [errMessage, setErrMessage] = useState("");
   const [updated, setUpdated] = useState(false);
   const {id} = useParams();
@@ -16,9 +17,9 @@ const FullStory = () => {
     async function fetchData() {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/v1/articles/${id}`
+          `${apiUrl}stories/${id}`
         );
-        setArticle(res.data);
+        setStory(res.data);
       } catch (err) {
         console.log(err.message);
         setErrMessage(err.message);
@@ -31,13 +32,13 @@ const FullStory = () => {
   }
   const Story = (
     <OneStory
-      key={article.id}
-      id={article.id}
-      title={article.title}
-      description={article.description}
-      username={article.username}
-      createdAt={article.createdAt}
-      updatedAt={article.updatedAt}
+      key={story.id}
+      id={story.id}
+      title={story.title}
+      description={story.description}
+      username={story.username}
+      createdAt={story.createdAt}
+      updatedAt={story.updatedAt}
       toggleSetUpdated={toggleSetUpdated}
     />
   );

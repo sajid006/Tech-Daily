@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import apiUrl from "../../utils/ApiUrl";
 import Modal from "../UI/Modal";
 const axios = require("axios").default;
-const apiUrl = "http://localhost:3000/api/v1/";
+
 
 const UpdateProfile = (props) => {
   const [enteredName, setEnteredName] = useState(props.name);
