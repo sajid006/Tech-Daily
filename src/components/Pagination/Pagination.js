@@ -2,27 +2,28 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import classes from "./Pagination.module.css";
 
-const PaginatedItems = (props) => {
-  const [currentItems, setCurrentItems] = useState(props.items);
-  const [pageCount, setPageCount] = useState(props.pageCount);
-  const [itemOffset, setItemOffset] = useState(props.pageNumber);
+const PaginatedItems = ({ items = [], children }) => {
+  const itemsPerPage = 3;
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
   useEffect(() => {
-    setCurrentItems(props.items);
-    setPageCount(props.pageCount);
-    setItemOffset(props.pageNumber);
-  }, [props]);
-
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, items]);
   const handlePageClick = (event) => {
-    console.log(event.selected+1);
-    props.changePageNumber(event.selected+1);
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    setItemOffset(newOffset);
   };
 
   return (
     <>
-      {currentItems && currentItems.map((Story) => (
-        <div key={Story.id}>{Story}</div>
-      ))}
-
+      <div>
+        {currentItems.map((Story) => (
+          <div key={Story.id}>{Story}</div>
+        ))}
+      </div>
       <ReactPaginate
         className={`${classes.container}`}
         previousClassName={`${classes.previousClass}`}
@@ -47,7 +48,6 @@ const PaginatedItems = (props) => {
       />
     </>
   );
-
 };
 
 export default PaginatedItems;
