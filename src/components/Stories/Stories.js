@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
-import PaginatedItems from "../Pagination/Pagination";
+import PaginatedItems from "../Pagination/PaginationBackEnd";
 import classes from "./Stories.module.css";
 import StoryItem from "./StoryItem";
 const axios = require("axios").default;

@@ -12,7 +12,11 @@ const Header = (props) => {
       <header className={classes.header}>
         
           
-          <button className={classes.button} onClick={() => navigate("/")}>
+          <button className={classes.button} onClick={() => {
+                navigate("/");
+                window.location.reload(false);
+              }
+            }>
             <h1>Tech Daily</h1>
           </button>
           

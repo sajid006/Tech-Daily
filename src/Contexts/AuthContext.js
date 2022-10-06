@@ -14,26 +14,24 @@ export function AuthContextProvider({ children }) {
   const cookies = new Cookies();
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     verify();
   });
   const verify = async () => {
     try {
-      const userToken = cookies.get('user');
+      const userToken = cookies.get("user");
       const data = {};
-      const userDetails = await axios.post(
-        `${apiUrl}users/verifyToken`,
-        data,{
+      console.log(userToken);
+      const userDetails = await axios.post(`${apiUrl}users/verifyToken`, data, {
         headers: {
-          Authorization: `Bearer ${userToken}`
-      }
-    },
-        config
-      );
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
       console.log(userDetails);
-      if (userDetails.data){setCurrentUser(userDetails.data);}
-      else setCurrentUser(null);
+      if (userDetails.data) {
+        setCurrentUser(userDetails.data);
+      } else setCurrentUser(null);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -41,48 +39,37 @@ export function AuthContextProvider({ children }) {
     }
   };
   const signup = async (userDetails) => {
-    const response = await axios.post(`${apiUrl}users`, userDetails, config);
+    const response = await axios.post(`${apiUrl}users/signup`, userDetails, config);
     if (response.data) {
       setCurrentUser(response.data.username);
+      cookies.set("user", response.data.token, { path: "/" });
     }
     return response;
   };
   const login = async (userDetails) => {
-    const response = await axios.post(`${apiUrl}users/login`, userDetails, config);
+    const response = await axios.post(
+      `${apiUrl}users/login`,
+      userDetails,
+      config
+    );
     if (response.data) {
-      console.log(response.data);
-      console.log("dlks "+ response.data.username);
       setCurrentUser(response.data.username);
-      
-      cookies.set('user', response.data.token, { path: '/'});
-      // console.log(cookies.get('user'));
+      cookies.set("user", response.data.token, { path: "/" });
     }
     return response;
   };
   const logout = async () => {
     await axios.get(`${apiUrl}users/logout`, config);
-    cookies.set('user', '', { path: '/'});
+    cookies.set("user", "", { path: "/" });
     setCurrentUser(null);
   };
-  // const verify = async () => {
-  //   const data = {};
-  //   const userDetails = await axios.post(
-  //     `${apiUrl}users/verifyToken`,
-  //     data,
-  //     config
-  //   );
-  //   if (userDetails.data) setCurrentUser(userDetails.data);
-  //   else {
-  //     setCurrentUser(null);
-  //   }
-  // };
   const value = {
     currentUser,
     setCurrentUser,
     signup,
     login,
     logout,
-    verify
+    verify,
   };
   return (
     <AuthContext.Provider value={value}>
