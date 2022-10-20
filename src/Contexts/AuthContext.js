@@ -59,7 +59,7 @@ export function AuthContextProvider({ children }) {
     return response;
   };
   const logout = async () => {
-    await axios.get(`${apiUrl}users/logout`, config);
+    //await axios.get(`${apiUrl}users/logout`, config);
     cookies.set("user", "", { path: "/" });
     setCurrentUser(null);
   };
