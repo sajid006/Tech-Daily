@@ -1,2 +1,2 @@
-const apiUrl = "https://localhost:7010/api/";
+const apiUrl = "https://cefalotechdailyapi.azurewebsites.net/api/";
 export default apiUrl;

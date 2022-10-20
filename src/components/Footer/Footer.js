@@ -12,7 +12,7 @@ return (
 	<Container>
 		<Row>
 		<Column>
-        <FooterLink href="http://facebook.com">
+        <FooterLink href="http://facebook.com/saaaaaaajid">
 			<i className="fab fa-facebook-f">
 				<FooterItem>
 				Facebook
@@ -21,10 +21,10 @@ return (
 			</FooterLink>
 		</Column>
 		<Column>
-        <FooterLink href="http://instagram.com">
-			<i className="fab fa-instagram">
+        <FooterLink href="http://github.com/sajid006">
+			<i className="fab fa-github">
 				<FooterItem>
-				Instagram
+				Github
 				</FooterItem>
 			</i>
 			</FooterLink>
@@ -39,10 +39,10 @@ return (
 			</FooterLink>
 		</Column>
 		<Column>
-			<FooterLink href="http://youtube.com">
-			<i className="fab fa-youtube">
+			<FooterLink href="http://linkedin.com/in/sajid006">
+			<i className="fab fa-linkedin">
 				<FooterItem>
-				Youtube
+				Linkedin
 				</FooterItem>
 			</i>
 			</FooterLink>
@@ -53,3 +53,6 @@ return (
 );
 };
 export default Footer;
+/*
+Data Source=tcp:cefalotechdailyapidbserver.database.windows.net,1433;Initial Catalog=Cefalo.TechDaily.Api_db;User Id=sajid@cefalotechdailyapidbserver;Password={mypassword}
+*/
