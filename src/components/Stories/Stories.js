@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Dropdown from 'react-bootstrap/Dropdown';
 import PaginatedItems from "../Pagination/PaginationBackEnd";
 import classes from "./Stories.module.css";
 import StoryItem from "./StoryItem";
@@ -45,18 +44,6 @@ const Stories = (props) => {
 
   return (
     <>
-      <div className={classes.dropdown}>
-        <Dropdown>
-          <Dropdown.Toggle variant="light" id="dropdown-basic">
-            Sort By
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item active={!sorted} onClick={()=>setSorted(false)}>New to Old</Dropdown.Item>
-            <Dropdown.Item active={sorted} onClick={()=>setSorted(true)}>Old to New</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
       <div className={classes.Stories}>
         <PaginatedItems items={StoriesList} pageNumber={pageNumber} pageCount={pageCount} changePageNumber={changePageNumber}></PaginatedItems>
       </div>
