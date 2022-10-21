@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Cookies from "universal-cookie";
+import LoadingModal from "../components/UI/LoadingModal";
 import apiUrl from "../utils/ApiUrl";
 const axios = require("axios").default;
 const AuthContext = React.createContext();
@@ -22,19 +23,19 @@ export function AuthContextProvider({ children }) {
     try {
       const userToken = cookies.get("user");
       const data = {};
-      console.log(userToken);
+      //console.log(userToken);
       const userDetails = await axios.post(`${apiUrl}users/verifyToken`, data, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log(userDetails);
+      //console.log(userDetails);
       if (userDetails.data) {
         setCurrentUser(userDetails.data);
       } else setCurrentUser(null);
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       setCurrentUser(null);
     }
   };
@@ -74,6 +75,8 @@ export function AuthContextProvider({ children }) {
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}
+      {/* {loading && <p> LOADING.....</p>} */}
+      {loading && <LoadingModal/>}
     </AuthContext.Provider>
   );
 }

@@ -15,7 +15,7 @@ const OneStory = (props) => {
   const { verify, currentUser } = useAuth();
   let data;
   useEffect(() => {
-    console.log(props.authorname);
+    //console.log(props.authorname);
     verify();
     if (currentUser === props.authorname) {
       setEditable(true);

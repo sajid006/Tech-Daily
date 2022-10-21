@@ -85,20 +85,20 @@ const UpdateUser = (props) => {
           }
           );
           setUpdateMessage(res.data);
-          console.log(res.data);
+          //console.log(res.data);
           props.onClose();
         } catch (err) {
-          console.log(err.response.data);
+          //console.log(err.response.data);
           setErrMessage(err.response.data.Message);
         }
       }
       await fetchData();
-      console.log(updateMessage);
+      //console.log(updateMessage);
     }
 
-    console.log(enteredName);
-    console.log(enteredEmail);
-    console.log(enteredPassword);
+    //console.log(enteredName);
+    //console.log(enteredEmail);
+    //console.log(enteredPassword);
     setEnteredPassword("");
     setEnteredPasswordTouched(false);
   };

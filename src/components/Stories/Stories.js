@@ -12,22 +12,22 @@ const Stories = (props) => {
     async function fetchData() {
       try {
         //setPageNumber(1);
-        console.log(pageNumber);
+        //console.log(pageNumber);
         const res = await axios.get(props.link+"?pageNumber="+pageNumber+"&pageSize=3");
         setPageCount(res.data.totalPages);
-        console.log(res.data.data);
+        //console.log(res.data.data);
         //if (!sorted) res.data.data.reverse();
         setArticles(res.data.data);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     }
     fetchData();
   }, [pageNumber, sorted, props.link]);
   const changePageNumber = (number) => {
-    console.log(number);
+    //console.log(number);
     setPageNumber(number);
-    console.log(pageNumber);
+    //console.log(pageNumber);
   }
   const StoriesList = articles.map((Story) => (
     

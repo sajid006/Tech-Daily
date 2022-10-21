@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { NavData } from "../lib/NavData";
 import styles from "./SideBar.module.css";
 
-export default function Sidenav() {
-    const [open, setopen] = useState(true)
+export default function Sidenav(props) {
+    const [open, setopen] = useState(props.sideBarOn);
     const toggleOpen = () => {
-        setopen(!open)
+      setopen(!open)
     }
+    console.log(props.sideBarOn);
+    useEffect(() => {
+      toggleOpen();
+    }, [props.sideBarOn]);
   return (
     <div className={open?styles.sidenav:styles.sidenavClosed}>
         {NavData.map(item =>{

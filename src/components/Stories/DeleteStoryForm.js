@@ -23,7 +23,7 @@ const DeleteStoryForm = (props) => {
         );
         navigate("/");
       } catch (err) {
-        console.log(err.response.data);
+        //console.log(err.response.data);
         setErrMessage("Failed to delete");
       }
     }

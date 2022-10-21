@@ -98,18 +98,18 @@ const Signup = (props) => {
           props.onClose();
           navigate('/');
         } catch (err) {
-          console.log(err.response.data);
+          //console.log(err.response.data);
           setErrMessage(err.response.data.Message);
         }
       }
       await fetchData();
-      console.log(signupMessage);
+      //console.log(signupMessage);
     }
 
-    console.log(enteredUsername);
-    console.log(enteredName);
-    console.log(enteredEmail);
-    console.log(enteredPassword);
+    //console.log(enteredUsername);
+    //console.log(enteredName);
+    //console.log(enteredEmail);
+    //console.log(enteredPassword);
     setEnteredPassword("");
     setEnteredPasswordTouched(false);
   };

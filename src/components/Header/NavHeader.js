@@ -1,3 +1,4 @@
+import { Dehaze } from "@mui/icons-material";
 import React, { useEffect } from "react";
 import { useAuth } from "../../Contexts/AuthContext";
 import LoggedInHome from "../Home/LoggedInHome";
@@ -13,7 +14,7 @@ const NavHeader = (props) => {
     <div className={classes.navheader}>
       <div>
         <button onClick={props.toggleSideBar} className="navbutton">
-          <i className="fa fa-fw fa-bars"></i>
+          <Dehaze/>
         </button>
       </div>
       <div>{currentUser ? <LoggedInHome /> : <LoggedOutHome />}</div>

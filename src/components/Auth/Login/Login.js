@@ -59,21 +59,21 @@ const Login = (props) => {
           };
           const res = await login(userDetails);
           setLoginMessage(res.data);
-          console.log(res.data);
+          //console.log(res.data);
           props.onClose();
           navigate('/');
         } catch (err) {
-          console.log(err.response.data.Message);
+          //console.log(err.response.data.Message);
           setErrMessage(err.response.data.Message);
           //alert(err.response.data.Message);
         }
       }
       fetchData();
-      console.log(loginMessage);
+      //console.log(loginMessage);
     }
 
-    console.log(enteredUsername);
-    console.log(enteredPassword);
+    //console.log(enteredUsername);
+    //console.log(enteredPassword);
 
     setEnteredPassword("");
     setEnteredPasswordTouched(false);

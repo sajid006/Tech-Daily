@@ -6,7 +6,7 @@
   padding-top: 28px;
 }
 .sidenavClosed {
-  composes: sidenav;
+  /*composes: sidenav;*/
   transition: width 0.3s ease-in-out;
   width: 60px;
 }

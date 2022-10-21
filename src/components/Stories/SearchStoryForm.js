@@ -1,3 +1,4 @@
+import { Search } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from './Stories.module.css';
@@ -6,7 +7,7 @@ const SearchStoryForm = (props) => {
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(authorname);
+        //console.log(authorname);
         navigate(`/stories/search/${authorname}`);
     };
     return (<div className={classes.main}>
@@ -21,7 +22,7 @@ const SearchStoryForm = (props) => {
                     }}
                 />
             </div>
-            <button type="submit"><i className="fa fa-search"></i></button>
+            <button type="submit"><Search/></button>
         </form>
     </div>);
 

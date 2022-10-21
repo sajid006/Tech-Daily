@@ -13,7 +13,7 @@ const PaginatedItems = (props) => {
   }, [props]);
 
   const handlePageClick = (event) => {
-    console.log(event.selected+1);
+    //console.log(event.selected+1);
     props.changePageNumber(event.selected+1);
   };
 

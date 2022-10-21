@@ -28,15 +28,15 @@ const User = () => {
           apiUrl + `users/${id}`
         );
         setUser(res.data);
-        console.log(user);
+        //console.log(user);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     }
     setApi(apiUrl + `stories/users/${id}`);
     fetchData();
     verify();
-    console.log(id);
+    //console.log(id);
     if (id === currentUser) setEditable(true);
     else setEditable(false);
   }, [update, id, currentUser]);

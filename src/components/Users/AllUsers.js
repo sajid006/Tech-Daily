@@ -15,9 +15,9 @@ const AllUsers = () => {
           apiUrl+'users'
         );
         setUsers(res.data);
-        console.log(users);
+        //console.log(users);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
         
       }
     }

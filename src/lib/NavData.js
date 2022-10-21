@@ -4,7 +4,7 @@ export const NavData = [
     {
         id: 0,
         icon: <Edit/>,
-        text: "Add a Story",
+        text: "Add Story",
         link: "/stories/new"
     },
     {
@@ -19,4 +19,5 @@ export const NavData = [
         text: "About Us",
         link: "/about"
     }
+    
 ]

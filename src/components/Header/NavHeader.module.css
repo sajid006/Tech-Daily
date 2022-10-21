@@ -1,3 +1,17 @@
 .navheader {
   display: flex;
 }
+.navbutton {
+  position: fixed;
+  height: 5rem;
+  width: 5rem;
+  z-index: 10;
+  background-color: #000000;
+  border: #000000;
+}
+.navbutton:selection {
+  background-color: rgb(10, 25, 41);
+}
+.navbutton:hover {
+  background-color: rgb(10, 25, 41);
+}

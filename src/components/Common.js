@@ -13,12 +13,10 @@ function Common(props) {
       <NavHeader toggleSideBar={toggleSideBar} />
 
       <div className={classes.common}>
-        {sideBarOn && (
-          <div className={classes.sidebar}>
-            <SideBar />
-          </div>
-        )}
-
+        <div className={classes.sidebar}>
+          <SideBar sideBarOn={sideBarOn}/>
+        </div>
+            
         <div className={classes.component}>
           {props.val()}
         </div>

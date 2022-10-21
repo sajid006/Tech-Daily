@@ -9,9 +9,16 @@ function Home() {
   useEffect(() => {
     setApi(apiUrl + `stories`);
   },[])
+
   const ShowStories = () => {
-    return (<div><SearchStoryForm /><Stories link={api} /></div>)
+    return (
+    <div>
+        <SearchStoryForm />
+        <Stories link={api} />
+    </div>
+    )
   }
+  
   return (
     <Common val={ShowStories} />
   );

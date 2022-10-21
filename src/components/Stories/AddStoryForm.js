@@ -68,7 +68,7 @@ const descriptionInputBlurHandler = (event) => {
               }
               );
               const ID = res.data.id;
-              console.log(ID);
+              //console.log(ID);
               navigate(`/stories/${ID}`);
             } catch (err) {
               setErrMessage(err.response.data.message);
