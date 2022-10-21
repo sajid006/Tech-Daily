@@ -1,3 +1,4 @@
+import { Facebook, GitHub, Laptop, LinkedIn } from '@mui/icons-material';
 import React from "react";
 import {
 	Box, Column, Container, FooterItem, FooterLink, FooterTitle, Row
@@ -13,38 +14,36 @@ return (
 		<Row>
 		<Column>
         <FooterLink href="http://facebook.com/saaaaaaajid">
-			<i className="fab fa-facebook-f">
+			<Facebook/>
 				<FooterItem>
 				Facebook
 				</FooterItem>
-			</i>
+			
 			</FooterLink>
 		</Column>
 		<Column>
         <FooterLink href="http://github.com/sajid006">
-			<i className="fab fa-github">
-				<FooterItem>
+			<GitHub/>
+			<FooterItem>
 				Github
-				</FooterItem>
-			</i>
+			</FooterItem>
 			</FooterLink>
 		</Column>
 		<Column>
-        <FooterLink href="http://twitter.com">
-			<i className="fab fa-twitter">
-				<FooterItem>
-				Twitter
-				</FooterItem>
-			</i>
+        <FooterLink href="http://leetcode.com/sajid006">
+			<Laptop/>
+			<FooterItem>
+				Leetcode
+			</FooterItem>
 			</FooterLink>
 		</Column>
 		<Column>
 			<FooterLink href="http://linkedin.com/in/sajid006">
-			<i className="fab fa-linkedin">
+				<LinkedIn/>
 				<FooterItem>
 				Linkedin
 				</FooterItem>
-			</i>
+			
 			</FooterLink>
 		</Column>
 		</Row>
