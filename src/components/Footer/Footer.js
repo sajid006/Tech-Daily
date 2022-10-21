@@ -8,7 +8,7 @@ const Footer = () => {
 return (
 	<Box>
 	<FooterTitle>
-		Tech Daily: A Computer Science Portal for Tech Enthusiasts
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tech Daily: A Computer Science Portal for Tech Enthusiasts
 	</FooterTitle>
 	<Container>
 		<Row>

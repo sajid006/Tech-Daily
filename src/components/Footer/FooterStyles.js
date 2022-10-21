@@ -27,12 +27,13 @@ export const Container = styled.div`
 export const Column = styled.div`
 display: flex;
 flex-direction: column;
-text-align: left;
+text-align: center;
 margin-left: 60px;
 `;
 
 export const Row = styled.div`
-display: grid;
+display: flex;
+justify-content: center;
 grid-template-columns: repeat(auto-fill,
 						minmax(185px, 1fr));
 grid-gap: 20px;
@@ -49,7 +50,11 @@ text-align: center;
 margin-top:-50px`
 
 export const FooterItem = styled.span`
-margin-left: 10px`
+margin-left: 10px;
+
+@media (max-width: 800px) {
+	font-size: 0rem;
+}`
 
 export const FooterLink = styled.a`
 color: #fff;

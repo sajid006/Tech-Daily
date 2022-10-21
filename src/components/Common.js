@@ -4,7 +4,7 @@ import classes from './Common.module.css';
 import NavHeader from "./Header/NavHeader";
 import SideBar from "./SideBar";
 function Common(props) {
-  const [sideBarOn, setSideBarOn] = useState(false);
+  const [sideBarOn, setSideBarOn] = useState(true);
   const toggleSideBar = () => {
     setSideBarOn(!sideBarOn);
   };
