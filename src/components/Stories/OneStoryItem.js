@@ -3,7 +3,6 @@ import { Button } from "react-bootstrap";
 import { useAuth } from "../../Contexts/AuthContext";
 import DateFormating from "../../utils/DateFormatting";
 import { downloadFile } from "../../utils/DownloadFile";
-import Modal from "../Portals/Modal";
 import Card from "../UI/Card";
 import DeleteStoryForm from "./DeleteStoryForm";
 import classes from "./StoryItem.module.css";
@@ -45,13 +44,9 @@ const OneStory = (props) => {
   };
   let editText;
   if (editable) {
-    editText = (
-      <div className={classes.sidediv}>
-        &nbsp;&nbsp;<button onClick={showEditStory}>Edit Story</button>
-        &nbsp;&nbsp;
-        <button onClick={() => setIsOpen(true)}>Delete Story</button>
+    editText = <div style={{display:"flex"}}>
+      &nbsp;&nbsp;<button onClick={showEditStory}>Edit Story</button>&nbsp;&nbsp;<button onClick={showDeleteStory}>Delete Story</button>
       </div>
-    );
   } else {
     editText = <p></p>
   }
@@ -70,9 +65,7 @@ const OneStory = (props) => {
           toggleSetUpdated={props.toggleSetUpdated}
         />
       )}
-      <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
-        <DeleteStoryForm id={props.id} handleClose={() => setIsOpen(false)} />
-      </Modal>
+      {deleteForm && <DeleteStoryForm onClose={closeDeleteStory} id={props.id}/>}
 
       <Card>
         <li className={classes.Story}>

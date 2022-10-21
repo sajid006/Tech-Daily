@@ -1,4 +1,4 @@
-import { Edit, Info, Man } from '@mui/icons-material';
+import { Edit, Info, Person } from '@mui/icons-material';
 import React from 'react';
 export const NavData = [
     {
@@ -9,7 +9,7 @@ export const NavData = [
     },
     {
         id: 1,
-        icon: <Man/>,
+        icon: <Person/>,
         text: "Author Directory",
         link: "/users"
     },

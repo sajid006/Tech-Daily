@@ -89,7 +89,7 @@ const UpdateUser = (props) => {
           props.onClose();
         } catch (err) {
           console.log(err.response.data);
-          setErrMessage(err.response.data.message);
+          setErrMessage(err.response.data.Message);
         }
       }
       await fetchData();
