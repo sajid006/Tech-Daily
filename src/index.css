@@ -29,7 +29,7 @@ body {
 .navbutton {
   position: fixed;
   height: 5rem;
-  width: 5rem;
+  width: 4rem;
   z-index: 10;
   background-color: #000000;
   border: #000000;
