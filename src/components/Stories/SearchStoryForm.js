@@ -7,8 +7,12 @@ const SearchStoryForm = (props) => {
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //console.log(authorname);
-        navigate(`/stories/search/${authorname}`);
+        if(!userName)navigate(`/`);
+        else{
+            console.log(userName);
+            navigate(`/stories/search/${userName}`);
+        }
+
     };
     return (<div className={classes.main}>
         <form className={classes.form} onSubmit={handleSubmit}>
