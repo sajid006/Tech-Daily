@@ -4,7 +4,7 @@ import classes from './Common.module.css';
 import NavHeader from "./Header/NavHeader";
 import SideBar from "./SideBar";
 function Common(props) {
-  const [sideBarOn, setSideBarOn] = useState(false);
+  const [sideBarOn, setSideBarOn] = useState(true);
   const toggleSideBar = () => {
     setSideBarOn(!sideBarOn);
   };
@@ -13,12 +13,10 @@ function Common(props) {
       <NavHeader toggleSideBar={toggleSideBar} />
 
       <div className={classes.common}>
-        {sideBarOn && (
-          <div className={classes.sidebar}>
-            <SideBar />
-          </div>
-        )}
-
+        <div className={classes.sidebar}>
+          <SideBar sideBarOn={sideBarOn}/>
+        </div>
+            
         <div className={classes.component}>
           {props.val()}
         </div>

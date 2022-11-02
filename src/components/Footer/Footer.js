@@ -1,3 +1,4 @@
+import { Facebook, GitHub, Laptop, LinkedIn } from '@mui/icons-material';
 import React from "react";
 import {
 	Box, Column, Container, FooterItem, FooterLink, FooterTitle, Row
@@ -7,44 +8,42 @@ const Footer = () => {
 return (
 	<Box>
 	<FooterTitle>
-		Tech Daily: A Computer Science Portal for Tech Enthusiasts
+	Tech Daily: A Computer Science Portal for Tech Enthusiasts
 	</FooterTitle>
 	<Container>
 		<Row>
 		<Column>
-        <FooterLink href="http://facebook.com">
-			<i className="fab fa-facebook-f">
+        <FooterLink href="http://facebook.com/saaaaaaajid">
+			<Facebook/>
 				<FooterItem>
 				Facebook
 				</FooterItem>
-			</i>
+			
 			</FooterLink>
 		</Column>
 		<Column>
-        <FooterLink href="http://instagram.com">
-			<i className="fab fa-instagram">
-				<FooterItem>
-				Instagram
-				</FooterItem>
-			</i>
+        <FooterLink href="http://github.com/sajid006">
+			<GitHub/>
+			<FooterItem>
+				Github
+			</FooterItem>
 			</FooterLink>
 		</Column>
 		<Column>
-        <FooterLink href="http://twitter.com">
-			<i className="fab fa-twitter">
-				<FooterItem>
-				Twitter
-				</FooterItem>
-			</i>
+        <FooterLink href="http://leetcode.com/sajid006">
+			<Laptop/>
+			<FooterItem>
+				Leetcode
+			</FooterItem>
 			</FooterLink>
 		</Column>
 		<Column>
-			<FooterLink href="http://youtube.com">
-			<i className="fab fa-youtube">
+			<FooterLink href="http://linkedin.com/in/sajid006">
+				<LinkedIn/>
 				<FooterItem>
-				Youtube
+				Linkedin
 				</FooterItem>
-			</i>
+			
 			</FooterLink>
 		</Column>
 		</Row>
@@ -53,3 +52,6 @@ return (
 );
 };
 export default Footer;
+/*
+Data Source=tcp:cefalotechdailyapidbserver.database.windows.net,1433;Initial Catalog=Cefalo.TechDaily.Api_db;User Id=sajid@cefalotechdailyapidbserver;Password={mypassword}
+*/

@@ -1,34 +1,25 @@
-import {
-  CDBSidebar,
-  CDBSidebarContent,
-  CDBSidebarFooter,
-  CDBSidebarMenu,
-  CDBSidebarMenuItem
-} from "cdbreact";
-import React from "react";
-import classes from './SideBar.module.css';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from "react-router-dom";
+import { NavData } from "../lib/NavData";
+import styles from "./SideBar.module.css";
 
-const SideBar = () => {
+export default function Sidenav(props) {
+    const [open, setopen] = useState(props.sideBarOn);
+    const toggleOpen = () => {
+      setopen(!open)
+    }
+    console.log(props.sideBarOn);
+    useEffect(() => {
+      toggleOpen();
+    }, [props.sideBarOn]);
   return (
-    <div>
-      <CDBSidebar className={classes.sidebar}>
-        <CDBSidebarContent>
-          <CDBSidebarMenu className={classes.sidebarmenu}>
-            <CDBSidebarMenuItem icon="fa fa-edit">
-              <a href="/stories/new">Add a Story</a>
-            </CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="fa fa-user">
-            <a href="/profiles">Author Directory</a>
-            </CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="credit-card" iconType="solid">
-            <a href="/about">About Us</a>
-            </CDBSidebarMenuItem>
-          </CDBSidebarMenu>
-        </CDBSidebarContent>
-        <CDBSidebarFooter></CDBSidebarFooter>
-      </CDBSidebar>
+    <div className={open?styles.sidenav:styles.sidenavClosed}>
+        {NavData.map(item =>{
+            return <NavLink key={item.id} className={styles.sideitem} to={item.link}>
+            {item.icon}
+            <span className={styles.linkText}>{item.text}</span>
+        </NavLink>
+        })}
     </div>
-  );
-};
-
-export default SideBar;
+  )
+}
