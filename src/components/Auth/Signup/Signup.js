@@ -95,6 +95,7 @@ const Signup = (props) => {
           };
           const res = await signup(userDetails);
           setSignupMessage(res.data);
+          localStorage.setItem('user', res.data["token"]);
           props.onClose();
           navigate('/');
         } catch (err) {

@@ -12,17 +12,22 @@ export function AuthContextProvider({ children }) {
   const config = {
     withCredentials: true,
   };
+  const userToken = localStorage.getItem('user');
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const verifyToken = async () => {
       try {
         const data = {};
+
         const userDetails = await axios.post(
           `${apiUrl}users/verifyToken`,
           data,
-          config
-        );
+          {
+            headers: {
+              'Authorization': `Bearer ${userToken}`
+            },
+          });
         if (userDetails.data){console.log(userDetails.data); setCurrentUser(userDetails.data);}
         else {
           setCurrentUser(null);
@@ -59,8 +64,11 @@ export function AuthContextProvider({ children }) {
     const userDetails = await axios.post(
       `${apiUrl}users/verifyToken`,
       data,
-      config
-    );
+      {
+        headers: {
+          'Authorization': `Bearer ${userToken}`
+        },
+      });
     if (userDetails.data) setCurrentUser(userDetails.data);
     else {
       setCurrentUser(null);

@@ -6,6 +6,7 @@ import classes from './AddStoryForm.module.css';
 const axios = require("axios").default;
 
 const AddStoryForm = () => {
+  const userToken = localStorage.getItem('user');
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
   const [enteredTitleTouched, setEnteredTitleTouched] = useState(false);
@@ -59,8 +60,11 @@ const descriptionInputBlurHandler = (event) => {
                   username: username,
                   title: enteredTitle,
                   description: enteredDescription,
-                }, { withCredentials: true }
-              );
+                }, {
+                  headers: {
+                    'Authorization': `Bearer ${userToken}`
+                  },
+                });
               const ID = res.data.id;
               console.log(ID);
               navigate(`/stories/${ID}`);

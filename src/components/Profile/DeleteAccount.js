@@ -8,15 +8,17 @@ const axios = require("axios").default;
 
 
 const DeleteAccount = (props) => {
+  const userToken = localStorage.getItem('user');
   const navigate = useNavigate();
-
   const [errMessage, setErrMessage] = useState("");
   const { logout }  = useAuth();
   const deleteUserHandler = async () => {
     async function deleteData() {
       try {
         await axios.delete(apiUrl + `users/${props.username}`, {
-          withCredentials: true,
+          headers: {
+            'Authorization': `Bearer ${userToken}`
+          },
         });
         await logout();
         props.onClose();

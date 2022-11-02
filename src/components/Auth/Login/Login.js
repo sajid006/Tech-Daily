@@ -59,9 +59,7 @@ const Login = (props) => {
           };
           const res = await login(userDetails);
           setLoginMessage(res.data);
-          console.log(res.data);
-          console.log(res.headers["set-cookie"]);
-          console.log(JSON.stringify(res.headers));
+          localStorage.setItem('user', res.data["token"]);
           props.onClose();
           navigate('/');
         } catch (err) {

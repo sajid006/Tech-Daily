@@ -6,6 +6,7 @@ const axios = require("axios").default;
 
 
 const UpdateProfile = (props) => {
+  const userToken = localStorage.getItem('user');
   const [enteredName, setEnteredName] = useState(props.name);
   const [enteredEmail, setEnteredEmail] = useState(props.email);
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -76,12 +77,16 @@ const UpdateProfile = (props) => {
               email: enteredEmail,
               password: enteredPassword,
             },
-            { withCredentials: true }
-          );
+            {
+              headers: {
+                'Authorization': `Bearer ${userToken}`
+              },
+            });
           setUpdateMessage(res.data);
           console.log(res.data);
           props.onClose();
         } catch (err) {
+          console.log(err);
           console.log(err.response.data);
           setErrMessage(err.response.data.message);
         }

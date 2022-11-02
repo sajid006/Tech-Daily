@@ -18,7 +18,7 @@ const Profile = () => {
   const [deleteBar, setDeleteBar] = useState("");
   const [editable, setEditable] = useState(false);
   const {id} = useParams();
-  const [api, setApi] = useState(`${apiUrl}${id}/stories`);
+  const [api, setApi] = useState(`${apiUrl}users/${id}/stories`);
   const { currentUser, verify } = useAuth();
 
   useEffect(() => {

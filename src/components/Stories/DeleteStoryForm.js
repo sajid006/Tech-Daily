@@ -5,16 +5,19 @@ import apiUrl from "../../utils/ApiUrl";
 const axios = require("axios").default;
 
 const DeleteStoryForm = (props) => {
+  const userToken = localStorage.getItem('user');
   const navigate = useNavigate();
-
   const [errMessage, setErrMessage] = useState("");
   const deleteUserHandler = async() => {
     async function deleteData() {
       try {
         await axios.delete(
           apiUrl + `stories/${props.id}`,
-           { withCredentials: true }
-        );
+          {
+            headers: {
+              'Authorization': `Bearer ${userToken}`
+            },
+          });
         navigate("/");
       } catch (err) {
         console.log(err.response.data);

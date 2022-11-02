@@ -9,7 +9,8 @@ const Logout = (props) => {
   const { logout } = useAuth();
   let navigate = useNavigate();
   const logoutHandler = async () => {
-    await logout();
+    const userToken = await logout();
+    localStorage.setItem('user', userToken);
     props.onClose();
     navigate("/");
   };
