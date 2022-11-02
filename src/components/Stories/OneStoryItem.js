@@ -55,7 +55,7 @@ const OneStory = (props) => {
   } else {
     editText = <p></p>
   }
-  const userProfile = "/profiles/" + props.username;
+  const userUser = "/users/" + props.username;
   const createdAt = DateFormating(props.createdAt);
   const updatedAt = DateFormating(props.updatedAt);
 
@@ -79,7 +79,7 @@ const OneStory = (props) => {
           <div className={classes.div}>
             <h3>{props.title}</h3>
             <h4>
-              Author: <a href={userProfile}>{props.username}</a>
+              Author: <a href={userUser}>{props.username}</a>
             </h4>
             <div className={classes.description}>{props.description}</div>
             <h6>Posted At: {createdAt}</h6>

@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import apiUrl from "../../utils/ApiUrl";
 import Common from "../Common";
 import PaginatedItems from "../Pagination/Pagination";
-import classes from './AllProfiles.module.css';
+import classes from './AllUsers.module.css';
 import UserItem from './UserItem';
 const axios = require("axios").default;
-const AllProfiles = () => {
+const AllUsers = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +35,7 @@ const AllProfiles = () => {
     />
   ));
   const showUsersList = () => {
-    return (<div className={classes.AllProfiles}><PaginatedItems items={UsersList}></PaginatedItems></div>)
+    return (<div className={classes.AllUsers}><PaginatedItems items={UsersList}></PaginatedItems></div>)
   }
    
   return (
@@ -45,4 +45,4 @@ const AllProfiles = () => {
   );
 };
 
-export default AllProfiles;
+export default AllUsers;

@@ -5,7 +5,7 @@ import Modal from "../UI/Modal";
 const axios = require("axios").default;
 
 
-const UpdateProfile = (props) => {
+const UpdateUser = (props) => {
   const userToken = localStorage.getItem('user');
   const [enteredName, setEnteredName] = useState(props.name);
   const [enteredEmail, setEnteredEmail] = useState(props.email);
@@ -114,7 +114,7 @@ const UpdateProfile = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={FormSubmissionHandler}>
-        <h3>Update Profile of {props.username}</h3>
+        <h3>Update User of {props.username}</h3>
         <div className={nameInputClasses}>
           <label htmlFor="name">Name</label>
           <input
@@ -170,4 +170,4 @@ const UpdateProfile = (props) => {
   );
 };
 
-export default UpdateProfile;
+export default UpdateUser;

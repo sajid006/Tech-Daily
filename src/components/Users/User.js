@@ -9,10 +9,10 @@ import Common from "../Common";
 import Stories from "../Stories/Stories";
 import Card from "../UI/Card";
 import DeleteAccount from "./DeleteAccount";
-import classes from './Profile.module.css';
-import UpdateProfile from "./UpdateProfile";
+import UpdateUser from "./UpdateUser";
+import classes from './User.module.css';
 const axios = require("axios").default;
-const Profile = () => {
+const User = () => {
   const [user, setUser] = useState("");
   const [update, setUpdate] = useState("");
   const [deleteBar, setDeleteBar] = useState("");
@@ -53,10 +53,10 @@ const Profile = () => {
     setDeleteBar(false);
   };
 
-  const showProfile = () => {
+  const showUser = () => {
     return (
       <>
-        <div className="profile">
+        <div className="user">
           <Card>
             <div>
               <h3>Username: {user.username}</h3>
@@ -68,7 +68,7 @@ const Profile = () => {
             {editable && (
               <div>
                 <Button variant="primary" size="lg" onClick={showUpdateHandler}>
-                  Update Profile
+                  Update User
                 </Button>{" "}
                 <Button variant="danger" size="lg" onClick={showDeleteHandler}>
                   Delete Account
@@ -91,7 +91,7 @@ const Profile = () => {
   return (
     <>
       {update && (
-        <UpdateProfile
+        <UpdateUser
           onClose={hideUpdateHandler}
           username={currentUser}
           email={user.email}
@@ -101,9 +101,9 @@ const Profile = () => {
       {deleteBar && (
         <DeleteAccount onClose={hideDeleteHandler} username={currentUser} />
       )}
-      <Common val={showProfile} />
+      <Common val={showUser} />
     </>
   );
 };
 
-export default Profile;
+export default User;

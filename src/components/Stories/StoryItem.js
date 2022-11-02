@@ -7,7 +7,7 @@ const StoryItem = (props) => {
   const navigate = useNavigate();
   const createdAt = DateFormating(props.createdAt);
   const updatedAt = DateFormating(props.updatedAt);
-  const userProfile = "/profiles/"+props.username;
+  const userUser = "/users/"+props.username;
   let description =props.description;
   if(description.length>300){
     description = description.slice(0,300);
@@ -19,7 +19,7 @@ const StoryItem = (props) => {
       <li className={classes.Story}>
         <div>
           <h3>{props.name}</h3>
-          <h4>Author: <a href={userProfile}>{props.username}</a></h4>
+          <h4>Author: <a href={userUser}>{props.username}</a></h4>
           <div className={classes.description}>{description}</div>
           <h6>Posted At: {createdAt}</h6>
           <h6>Updated At: {updatedAt}</h6>

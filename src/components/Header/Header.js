@@ -26,7 +26,7 @@ const Header = (props) => {
         {currentUser && (
           <LoggedInHeader
             onShowLogout={props.onShowLogout}
-            onClickProfile={props.onClickProfile}
+            onClickUser={props.onClickUser}
           />
         )}
       </header>
