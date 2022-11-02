@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import LoadingModal from "../components/UI/LoadingModal";
 import apiUrl from "../utils/ApiUrl";
 const axios = require("axios").default;
 const AuthContext = React.createContext();
@@ -85,6 +86,7 @@ export function AuthContextProvider({ children }) {
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}
+      {loading && <LoadingModal/>}
     </AuthContext.Provider>
   );
 }
