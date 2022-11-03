@@ -59,7 +59,6 @@ const Login = (props) => {
           };
           const res = await login(userDetails);
           setLoginMessage(res.data);
-          localStorage.setItem('user', res.data["token"]);
           props.onClose();
           navigate('/');
         } catch (err) {

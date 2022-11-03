@@ -10,7 +10,6 @@ const Logout = (props) => {
   let navigate = useNavigate();
   const logoutHandler = async () => {
     const userToken = await logout();
-    localStorage.setItem('user', userToken);
     props.onClose();
     navigate("/");
   };

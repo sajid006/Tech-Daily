@@ -20,7 +20,6 @@ export function AuthContextProvider({ children }) {
     const verifyToken = async () => {
       try {
         const data = {};
-
         const userDetails = await axios.post(
           `${apiUrl}users/verifyToken`,
           data,
@@ -44,6 +43,7 @@ export function AuthContextProvider({ children }) {
   const signup = async (userDetails) => {
     const response = await axios.post(`${apiUrl}users`, userDetails, config);
     if (response.data) {
+      localStorage.setItem('user', response.data.token);
       setCurrentUser(response.data.username);
     }
     return response;
@@ -51,12 +51,13 @@ export function AuthContextProvider({ children }) {
   const login = async (userDetails) => {
     const response = await axios.post(`${apiUrl}users/login`, userDetails, config);
     if (response.data) {
-      console.log(response.data);
+      localStorage.setItem('user', response.data.token);
       setCurrentUser(response.data.username);
     }
     return response;
   };
   const logout = async () => {
+    localStorage.setItem('user', '');
     await axios.get(`${apiUrl}users/logout`, config);
     setCurrentUser(null);
   };
@@ -90,3 +91,4 @@ export function AuthContextProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
