@@ -69,6 +69,24 @@ const Signup = (props) => {
     setEnteredPasswordTouched(true);
   };
 
+  async function fetchData() {
+    try {
+      const userDetails = {
+        username: enteredUsername,
+        name: enteredName,
+        email: enteredEmail,
+        password: enteredPassword,
+      };
+      const res = await signup(userDetails);
+      setSignupMessage(res.data);
+      props.onClose();
+      navigate('/');
+    } catch (err) {
+      console.log(err.response.data);
+      setErrMessage(err.response.data.message);
+    }
+  }
+
   const FormSubmissionHandler = async (event) => {
     event.preventDefault();
 
@@ -85,24 +103,7 @@ const Signup = (props) => {
     ) {
       return;
     } else {
-      async function fetchData() {
-        try {
-          const userDetails = {
-            username: enteredUsername,
-            name: enteredName,
-            email: enteredEmail,
-            password: enteredPassword,
-          };
-          const res = await signup(userDetails);
-          setSignupMessage(res.data);
-          props.onClose();
-          navigate('/');
-        } catch (err) {
-          console.log(err.response.data);
-          setErrMessage(err.response.data.message);
-        }
-      }
-      await fetchData();
+      fetchData();
       console.log(signupMessage);
     }
 

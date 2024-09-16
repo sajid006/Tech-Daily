@@ -43,6 +43,24 @@ const Login = (props) => {
     setEnteredPasswordTouched(true);
   };
 
+  async function fetchData() {
+    try {
+      const userDetails = {
+        username: enteredUsername,
+        password: enteredPassword,
+      };
+      const res = await login(userDetails);
+      setLoginMessage(res.data);
+      console.log(res.data);
+      props.onClose();
+      navigate('/');
+    } catch (err) {
+      console.log(err.response.data.Message);
+      setErrMessage(err.response.data.Message);
+      //alert(err.response.data.Message);
+    }
+  }
+
   const FormSubmissionHandler = async (event) => {
     event.preventDefault();
 
@@ -51,23 +69,6 @@ const Login = (props) => {
     if (!enteredUsernameIsValid || !enteredPasswordIsValid) {
       return;
     } else {
-      async function fetchData() {
-        try {
-          const userDetails = {
-            username: enteredUsername,
-            password: enteredPassword,
-          };
-          const res = await login(userDetails);
-          setLoginMessage(res.data);
-          console.log(res.data);
-          props.onClose();
-          navigate('/');
-        } catch (err) {
-          console.log(err.response.data.Message);
-          setErrMessage(err.response.data.Message);
-          //alert(err.response.data.Message);
-        }
-      }
       fetchData();
       console.log(loginMessage);
     }

@@ -15,68 +15,69 @@ const UpdateStoryForm = (props) => {
   const [errMessage, setErrMessage] = useState("");
   const navigate = useNavigate();
   const enteredTitleIsValid = enteredTitle.trim() !== "";
-  const enteredDescriptionIsValid = enteredDescription.trim() !=="";
+  const enteredDescriptionIsValid = enteredDescription.trim() !== "";
   const titleInputIsInvalid =
-  !enteredTitleIsValid && enteredTitleTouched;
-const descriptionInputIsInvalid =
-  !enteredDescriptionIsValid && enteredDescriptionTouched;
+    !enteredTitleIsValid && enteredTitleTouched;
+  const descriptionInputIsInvalid =
+    !enteredDescriptionIsValid && enteredDescriptionTouched;
 
-let formIsValid = false;
+  let formIsValid = false;
 
-if (enteredTitleIsValid && enteredDescriptionIsValid) {
-  formIsValid = true;
-}
+  if (enteredTitleIsValid && enteredDescriptionIsValid) {
+    formIsValid = true;
+  }
 
-const titleInputChangeHandler = (event) => {
-  setEnteredTitle(event.target.value);
-};
+  const titleInputChangeHandler = (event) => {
+    setEnteredTitle(event.target.value);
+  };
 
-const descriptionInputChangeHandler = (event) => {
-  setEnteredDescription(event.target.value);
-};
+  const descriptionInputChangeHandler = (event) => {
+    setEnteredDescription(event.target.value);
+  };
 
-const titleInputBlurHandler = (event) => {
-  setEnteredTitleTouched(true);
-};
+  const titleInputBlurHandler = (event) => {
+    setEnteredTitleTouched(true);
+  };
 
-// const navigate = useNavigate('/produce');
-const descriptionInputBlurHandler = (event) => {
-  setEnteredDescriptionTouched(true);
-};
+  async function postData() {
+    try {
+
+      const res = await axios.patch(
+        apiUrl + `stories/${props.id}`,
+        {
+          title: enteredTitle,
+          description: enteredDescription,
+        }, {
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      }
+      );
+      props.onClose();
+      props.toggleSetUpdated();
+    } catch (err) {
+      setErrMessage(err.response.data);
+    }
+  }
+
+  // const navigate = useNavigate('/produce');
+  const descriptionInputBlurHandler = (event) => {
+    setEnteredDescriptionTouched(true);
+  };
   const FormSubmissionHandler = async (event) => {
     event.preventDefault();
 
     setEnteredTitleTouched(true);
     setEnteredDescriptionTouched(true);
     if (!enteredTitleIsValid || !enteredDescriptionIsValid) {
-        return;
-      } else {
-        async function postData() {
-            try {
-              
-              const res = await axios.patch(
-                apiUrl + `stories/${props.id}`,
-                {
-                  title: enteredTitle,
-                  description: enteredDescription,
-                }, {
-                  headers: {
-                    Authorization: `Bearer ${userToken}`
-                }
-              }
-              );
-              props.onClose();
-              props.toggleSetUpdated();
-            } catch (err) {
-              setErrMessage(err.response.data);
-            }
-          }
-          await postData();
-      }
+      return;
+    } else {
+      postData();
+    }
   };
-    return (
-   <Modal onClose={props.onClose}>
- <form className={classes.EditStories} onSubmit={FormSubmissionHandler}>
+  return (
+    <Modal onClose={props.onClose}>
+      <form className={classes.EditStories} onSubmit={FormSubmissionHandler}>
         <h3>Update Story</h3>
         <div className={classes.descriptionStyle}>
           <label className={classes.title} htmlFor="name">Title</label>
@@ -93,7 +94,7 @@ const descriptionInputBlurHandler = (event) => {
         </div>
         <div className={classes.descriptionStyle}>
           <label className={classes.title} htmlFor="name">Description</label>
-          <textarea 
+          <textarea
             type="text"
             id="Description"
             onChange={descriptionInputChangeHandler}
@@ -106,13 +107,13 @@ const descriptionInputBlurHandler = (event) => {
           )}
         </div>
         {errMessage && (
-            <p className="error-text">{errMessage}</p>
-          )}
+          <p className="error-text">{errMessage}</p>
+        )}
         <div className={classes.buttonclass}>
-        <button disabled={!formIsValid}>Submit</button>
+          <button disabled={!formIsValid}>Submit</button>
         </div>
       </form>
-   </Modal> 
-    );
+    </Modal>
+  );
 };
-export default UpdateStoryForm ;
+export default UpdateStoryForm;

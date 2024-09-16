@@ -55,6 +55,30 @@ const UpdateUser = (props) => {
     setEnteredPasswordTouched(true);
   };
 
+  async function fetchData() {
+    try {
+      const res = await axios.patch(
+        apiUrl + `users/${props.username}`,
+        {
+          name: enteredName,
+          email: enteredEmail,
+          password: enteredPassword,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`
+        }
+      }
+      );
+      setUpdateMessage(res.data);
+      console.log(res.data);
+      props.onClose();
+    } catch (err) {
+      console.log(err.response.data);
+      setErrMessage(err.response.data.message);
+    }
+  }
+
   const FormSubmissionHandler = async (event) => {
     event.preventDefault();
 
@@ -69,30 +93,7 @@ const UpdateUser = (props) => {
     ) {
       return;
     } else {
-      async function fetchData() {
-        try {
-          const res = await axios.patch(
-            apiUrl + `users/${props.username}`,
-            {
-              name: enteredName,
-              email: enteredEmail,
-              password: enteredPassword,
-            },
-            {
-              headers: {
-                Authorization: `Bearer ${userToken}`
-            }
-          }
-          );
-          setUpdateMessage(res.data);
-          console.log(res.data);
-          props.onClose();
-        } catch (err) {
-          console.log(err.response.data);
-          setErrMessage(err.response.data.message);
-        }
-      }
-      await fetchData();
+      fetchData();
       console.log(updateMessage);
     }
 
