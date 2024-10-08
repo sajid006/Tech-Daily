@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Footer from "../components/Footer/Footer";
 import { AuthContextProvider } from "../Contexts/AuthContext";
 import Home from "./Home/Home";
 import AddStory from "./Stories/AddStory";
@@ -31,7 +30,6 @@ const App = () => {
           <Route exact path="/about" element={<AboutUs />}></Route>
         </Routes>
       </AuthContextProvider>
-      <Footer/>
     </Router>
     
   );

@@ -5,7 +5,7 @@ import Logout from "../Auth/Logout";
 import Header from "../Header/Header";
 const LoggedInHome = () => {
   const [logoutIsShown, setLogoutIsShown] = useState(false);
-  const { currentUser} = useAuth();
+  const { currentUser } = useAuth();
   let navigate = useNavigate();
   const showLogoutHandler = () => {
     setLogoutIsShown(true);
@@ -20,11 +20,8 @@ const LoggedInHome = () => {
   };
   return (
     <>
-      {logoutIsShown && <Logout onClose={hideLogoutHandler}/>}
-      <Header
-        onShowLogout={showLogoutHandler}
-        onClickUser={navigateToUser}
-      />
+      {logoutIsShown && <Logout onClose={hideLogoutHandler} />}
+      <Header onShowLogout={showLogoutHandler} onClickUser={navigateToUser} />
     </>
   );
 };

@@ -1,19 +1,16 @@
 import { Facebook, GitHub, Laptop, LinkedIn } from '@mui/icons-material';
 import React from "react";
 import {
-	Box, Column, Container, FooterItem, FooterLink, FooterTitle, Row
-} from "./FooterStyles";
+	Box, Column, Container, FooterItem, FooterLink, Row
+} from "./SocialMediaStyles";
 
-const Footer = () => {
+const SocialMediaLinks = () => {
 return (
 	<Box>
-	<FooterTitle>
-	Tech Daily: A Computer Science Portal for Tech Enthusiasts
-	</FooterTitle>
 	<Container>
 		<Row>
 		<Column>
-        <FooterLink href="http://facebook.com/saaaaaaajid">
+        <FooterLink href="http://facebook.com/sajid.hasan.2026">
 			<Facebook/>
 				<FooterItem>
 				Facebook
@@ -51,7 +48,7 @@ return (
 	</Box>
 );
 };
-export default Footer;
+export default SocialMediaLinks;
 /*
 Data Source=tcp:cefalotechdailyapidbserver.database.windows.net,1433;Initial Catalog=Cefalo.TechDaily.Api_db;User Id=sajid@cefalotechdailyapidbserver;Password={mypassword}
 */

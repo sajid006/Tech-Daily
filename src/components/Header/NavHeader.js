@@ -3,6 +3,7 @@ import { useAuth } from "../../Contexts/AuthContext";
 import LoggedInHome from "../Home/LoggedInHome";
 import LoggedOutHome from "../Home/LoggedOutHome";
 import classes from './NavHeader.module.css';
+import { DensityMedium } from "@mui/icons-material";
 const NavHeader = (props) => {
   const {verify, currentUser} = useAuth();
   useEffect(() => {
@@ -13,7 +14,7 @@ const NavHeader = (props) => {
     <div className={classes.navheader}>
       <div>
         <button onClick={props.toggleSideBar} className="navbutton">
-          <i className="fa fa-fw fa-bars"></i>
+          <DensityMedium />
         </button>
       </div>
       <div>{currentUser ? <LoggedInHome /> : <LoggedOutHome />}</div>

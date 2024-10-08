@@ -10,8 +10,6 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={classes.header}>
-        
-          
           <button className={classes.button} onClick={() => navigate("/")}>
             <h1>Tech Daily</h1>
           </button>

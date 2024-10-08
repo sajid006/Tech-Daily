@@ -25,6 +25,7 @@
   width: 20rem;
   height: 3rem;
   border-color: blue;
+  padding-left: 5px;
 }
 .dropdown {
   padding-top: 4rem;

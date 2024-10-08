@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from './Stories.module.css';
+import { SearchOutlined } from "@mui/icons-material";
 const SearchStoryForm = (props) => {
     const [userName, setUserName] = useState(props.searchValue);
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const SearchStoryForm = (props) => {
                     }}
                 />
             </div>
-            <button type="submit"><i className="fa fa-search"></i></button>
+            <button type="submit"><SearchOutlined/></button>
         </form>
     </div>);
 

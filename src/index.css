@@ -10,7 +10,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #6967e0;
+  background-color: #f2f4f7;
 }
 
 .user {
@@ -31,8 +31,12 @@ body {
   height: 5rem;
   width: 5rem;
   z-index: 10;
-  background-color: #000000;
-  border: #000000;
+  background-color: #42b72a;
+  border: #42b72a;
+}
+
+.navbutton:hover {
+  background: none;
 }
 .parent {
   padding: 1rem;
@@ -71,8 +75,8 @@ body {
 
 .form-control input:focus {
   outline: none;
-  border-color: #240370;
-  background-color: #e0d4fd;
+  border-color: #0866ff;
+  background-color: #f2f4f7;
 }
 
 .control-group {
@@ -88,9 +92,9 @@ body {
 
 button {
   font: inherit;
-  background-color: #240370;
+  background-color: #0866ff;
   color: white;
-  border: 1px solid #240370;
+  border: 1px solid #0866ff;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
@@ -98,8 +102,8 @@ button {
 
 button:hover,
 button:active {
-  background-color: #33059e;
-  border-color: #33059e;
+  background-color: #0462fa;
+  border-color: #0462fa;
 }
 
 button:disabled,
@@ -115,7 +119,6 @@ button:disabled:active {
   height: "50%";
   top: "5rem";
   position: "sticky";
-  background-color: "black";
 }
 .form-cancel {
   background-color: #ccc;
