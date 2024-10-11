@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Box = styled.div`
   width: 100%;
 
-  @media (max-width: 1000px) {
+  /* @media (max-width: 1000px) {
     padding: 70px 30px;
-  }
+  } */
 `;
 
 export const Container = styled.div`
@@ -19,7 +19,7 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   text-align: start;
-  margin-right: 60px;
+  margin-right: 30px;
 `;
 
 export const Row = styled.div`

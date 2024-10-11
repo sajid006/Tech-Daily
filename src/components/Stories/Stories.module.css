@@ -29,8 +29,13 @@
 }
 .dropdown {
   padding-top: 4rem;
-  margin-left: 89%;
+  margin-left: 90%;
   margin-bottom: -9rem;
+  @media (max-width: 1000px) {
+    margin-left: 90%;
+    margin-bottom: 0;
+    padding: 0;
+  }
 }
 /*
 @keyframes Stories-appear {
