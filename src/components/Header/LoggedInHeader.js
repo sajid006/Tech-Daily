@@ -1,9 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Col, Row } from "react-bootstrap";
-import { useAuth } from "../../Contexts/AuthContext";
 import HeaderButton from "./HeaderButton";
 const LoggedInHeader = (props) => {
-  const { currentUser} = useAuth();
+    const currentUser = useSelector(state => state.auth.currentUser);
   return (
     <Row>
     <Col md>

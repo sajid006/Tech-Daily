@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthContext";
+import { useSelector } from "react-redux";
 import apiUrl from "../../utils/ApiUrl";
 import classes from './AddStoryForm.module.css';
 const axios = require("axios").default;
 
 const AddStoryForm = () => {
   const userToken = localStorage.getItem('user');
+  const currentUser = useSelector(state => state.auth.currentUser);
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
   const [enteredTitleTouched, setEnteredTitleTouched] = useState(false);
   const [enteredDescriptionTouched, setEnteredDescriptionTouched] = useState(false);
   const [errMessage, setErrMessage] = useState("");
-  const { currentUser } = useAuth();
   const navigate = useNavigate();
   const enteredTitleIsValid = enteredTitle.trim() !== "";
   const enteredDescriptionIsValid = enteredDescription.trim() !=="";

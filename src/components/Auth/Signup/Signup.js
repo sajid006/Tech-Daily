@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../Contexts/AuthContext";
 import Modal from "../../UI/Modal";
+import { register } from "../../../store/slices/authSlice";
 const Signup = (props) => {
-  const {signup} = useAuth();
+  const dispatch = useDispatch();
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -93,7 +94,8 @@ const Signup = (props) => {
             email: enteredEmail,
             password: enteredPassword,
           };
-          const res = await signup(userDetails);
+          const res = dispatch(register(userDetails));
+          console.log(res);
           setSignupMessage(res.data);
           props.onClose();
           navigate('/');

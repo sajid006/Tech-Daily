@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthContext";
+import { useSelector, useDispatch } from "react-redux"
 import apiUrl from "../../utils/ApiUrl";
 import DateFormating from "../../utils/DateFormatting";
 import Common from "../Common";
@@ -11,15 +11,17 @@ import Card from "../UI/Card";
 import DeleteAccount from "./DeleteAccount";
 import UpdateUser from "./UpdateUser";
 import classes from './User.module.css';
+import { verify } from "../../store/slices/authSlice";
 const axios = require("axios").default;
 const User = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.auth.currentUser);
   const [user, setUser] = useState("");
   const [update, setUpdate] = useState("");
   const [deleteBar, setDeleteBar] = useState("");
   const [editable, setEditable] = useState(false);
   const {id} = useParams();
   const [api, setApi] = useState(`${apiUrl}users/${id}/stories`);
-  const { currentUser, verify } = useAuth();
 
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +37,7 @@ const User = () => {
     }
     setApi(`${apiUrl}users/${id}/stories`);
     fetchData();
-    verify();
+    dispatch(verify);
     console.log(id);
     if (id === currentUser) setEditable(true);
     else setEditable(false);

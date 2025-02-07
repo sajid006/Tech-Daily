@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { useAuth } from "../../Contexts/AuthContext";
+import { useSelector, useDispatch } from "react-redux";
 import DateFormating from "../../utils/DateFormatting";
 import { downloadFile } from "../../utils/DownloadFile";
 import Modal from "../Portals/Modal";
@@ -8,16 +8,18 @@ import Card from "../UI/Card";
 import DeleteStoryForm from "./DeleteStoryForm";
 import classes from "./StoryItem.module.css";
 import UpdateStoryForm from "./UpdateStoryForm";
+import { verify } from "../../store/slices/authSlice";
 const OneStory = (props) => {
   const [editable, setEditable] = useState(false);
   const [editForm, setEditForm] = useState(false);
   const [deleteForm, setDeleteForm] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const { verify, currentUser } = useAuth();
+    const currentUser = useSelector(state => state.auth.currentUser);
+  const dispatch = useDispatch();
   let data;
   useEffect(() => {
     console.log(props.username);
-    verify();
+    dispatch(verify);
     if (currentUser === props.username) {
       setEditable(true);
     } else setEditable(false);

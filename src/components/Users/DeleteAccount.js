@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthContext";
+import { useDispatch } from "react-redux";
 import apiUrl from "../../utils/ApiUrl";
 import Modal from "../UI/Modal";
+import { logout } from "../../store/slices/authSlice";
 const axios = require("axios").default;
 
 
 const DeleteAccount = (props) => {
   const userToken = localStorage.getItem('user');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [errMessage, setErrMessage] = useState("");
-  const { logout }  = useAuth();
   const deleteUserHandler = async () => {
     async function deleteData() {
       try {
@@ -20,7 +21,7 @@ const DeleteAccount = (props) => {
             'Authorization': `Bearer ${userToken}`
           },
         });
-        await logout();
+        dispatch(logout);
         props.onClose();
         navigate("/");
       } catch (err) {

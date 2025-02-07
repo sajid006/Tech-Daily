@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthContext";
 import classes from "./Header.module.css";
 import LoggedInHeader from "./LoggedInHeader";
 import LoggedOutHeader from "./LoggedOutHeader";
 const Header = (props) => {
+  const currentUser = useSelector(state => state.auth.currentUser);
   const navigate = useNavigate();
-  const {currentUser} = useAuth();
   return (
     <Fragment>
       <header className={classes.header}>

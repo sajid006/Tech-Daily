@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../Contexts/AuthContext";
+import { useDispatch } from 'react-redux'
 import Modal from "../../UI/Modal";
+import { login } from "../../../store/slices/authSlice";
 
 
 const Login = (props) => {
-  const { login } = useAuth();
+  const dispatch = useDispatch()
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredUsernameTouched, setEnteredUsernameTouched] = useState(false);
@@ -57,7 +58,8 @@ const Login = (props) => {
             username: enteredUsername,
             password: enteredPassword,
           };
-          const res = await login(userDetails);
+          const res = dispatch(login(userDetails));
+          console.log(res);
           setLoginMessage(res.data);
           props.onClose();
           navigate('/');

@@ -1,15 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthContext";
 import Modal from "../UI/Modal";
+import { logout } from "../../store/slices/authSlice";
 
 const axios = require("axios").default;
 const Logout = (props) => {
-  const { logout } = useAuth();
   let navigate = useNavigate();
+  const dispatch = useDispatch();
   const logoutHandler = async () => {
-    const userToken = await logout();
+    dispatch(logout);
+    console.log('yo');
     props.onClose();
     navigate("/");
   };

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthContextProvider } from "../Contexts/AuthContext";
+import { store } from '../store/store'
+import { Provider } from 'react-redux'
 import Home from "./Home/Home";
 import AddStory from "./Stories/AddStory";
 import FullStory from "./Stories/FullStory";
@@ -13,7 +14,7 @@ import NotFound from "./Views/NotFound";
 const App = () => {
   return (
     <Router>
-      <AuthContextProvider>
+      <Provider store={store}>
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/home" element={<Home />}></Route>
@@ -29,7 +30,7 @@ const App = () => {
           <Route exact path="*" element={<NotFound />}></Route>
           <Route exact path="/about" element={<AboutUs />}></Route>
         </Routes>
-      </AuthContextProvider>
+      </Provider>
     </Router>
     
   );
